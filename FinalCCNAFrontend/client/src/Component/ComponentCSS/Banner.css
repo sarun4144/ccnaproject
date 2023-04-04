@@ -1,0 +1,118 @@
+
+.container-banner
+{
+    background-color: #ffffff10;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-radius: 12px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    overflow: hidden;
+    overflow-y: auto;
+    margin-left: 150px;
+    margin-right: 150px;
+}
+.banner-bg {
+    height: 550px;
+    background-size:cover;
+    overflow: hidden;
+    background-position: center;
+}
+.banner-con {
+    display: flex;
+    align-items: center;
+    justify-content:center;
+    height: 500px;
+}
+.banner-text {
+    color: #333;
+    text-shadow: 1px 1px 1px black;
+    text-align: center;
+    font-family: 'Mitr',sans-serif; font-style: normal; font-weight: 400;
+    background: linear-gradient(90deg, #3378FF, #9442FE);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    border-radius: 10px;
+    padding: 25px;
+}
+.banner-btn {
+    background: #fff;
+    display: inline-block;
+    padding: .5rem 1rem;
+    text-decoration: none;
+    color: #333;
+    border: 2px solid transparent;
+    transition: 0.3s;
+    margin-top: 1rem;
+    border-radius: 5px;
+    text-transform: uppercase;
+}
+.banner-btn:hover {
+    border: 2px solid #fff;
+    background: transparent;
+    color: #fff;
+}
+.banner-btn-reg {
+    background: #ffd700;
+    display: inline-block;
+    padding: .5rem 1rem;
+    text-decoration: none;
+    color: #333;
+    border: 2px solid transparent;
+    transition: 0.3s;
+    margin-top: 1rem;
+    border-radius: 5px;
+    text-transform: uppercase;
+}
+.banner-btn-reg:hover {
+    border: 2px solid #ffd700;
+    background: transparent;
+    color: #ffd700;
+}
+
+.banner-btn-out {
+    background: rgb(255, 70, 70);
+    display: inline-block;
+    padding: .5rem 1rem;
+    text-decoration: none;
+    color: white;
+    border: 2px solid transparent;
+    transition: 0.3s;
+    margin-top: 1rem;
+    border-radius: 5px;
+    text-transform: uppercase;
+}
+.banner-btn-out:hover {
+    border: 2px solid rgb(255, 70, 70);
+    background: transparent;
+    color: rgb(255, 70, 70);
+}
+
+.banner-img {
+    outline: 2px solid black;
+    padding: 30px;
+    background-image: linear-gradient(180deg,transparent 55%,#23242a),url(../bannerbg.jpg);
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+}
+
+@media screen and (max-width: 1160px) {
+    .banner-text {
+        padding: 0 2rem;
+    }
+
+    .container-banner {
+        margin-left: 1px;
+        margin-right: 1px;
+    }
+
+    .banner-img {
+        padding: 15px;
+    }
+
+    .banner-bg{
+        height: 100%;
+    }
+
+}
+

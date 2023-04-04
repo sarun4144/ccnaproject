@@ -1,0 +1,16 @@
+.landing-container {
+  display:  flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: #333;
+}
+
+.landing-wrap{
+  flex: 1;
+  background: #dbdbdb;
+  z-index: 1000;
+}
+
+* {
+  font-family: 'Mitr',sans-serif;
+}

@@ -1,0 +1,67 @@
+.regis-card {
+    background-color: rgb(255, 255, 255);
+    margin-top: 50px;
+    margin-bottom: 50px;
+    border-radius: 5px;
+    padding: 15px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    overflow: hidden;
+    overflow-y: auto;
+}
+.submitre{
+    margin-left: 20%;
+    background: rgb(0, 0, 0);
+    display: inline-block;
+    padding: .5rem 1rem;
+    text-decoration: none;
+    color: rgb(255, 255, 255);
+    border: 2px solid transparent;
+    transition: 0.3s;
+    border-radius: 5px;
+    text-transform: uppercase;
+}
+.submitre:hover{
+    border: 2px solid rgb(68, 224, 68);
+    background: transparent;
+    color: rgb(0, 0, 0);
+    background-color: rgb(68, 224, 68);
+}
+.title{
+    text-align: center;
+}
+.regis-header {
+    background-color: #333;
+    color: white;
+    padding-left: 16px;
+    padding: 3px;
+    border-radius: 3px;
+    font-size: 2em;
+    width: 80%;
+}
+
+@media screen and (max-width: 767px) and (min-width: 490px){
+    .title{
+        padding-top: 5px;
+        font-size: 37px;
+    }
+    .submit{
+        margin-left: 20%;
+    }
+    .card {
+        margin-top: 15px;
+    }
+}
+@media screen and (max-width: 490px) {
+    .title{
+        font-size: 25px;
+        padding-top: 5px;
+    }
+    .submit{
+        font-size: 15px;
+        margin: 0 auto;
+        padding: .5rem 0.5rem;
+    }
+    .regis-card {
+        margin-top: 15px;
+    }
+}
