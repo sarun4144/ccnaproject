@@ -8,6 +8,13 @@ export const examadd = async (authtoken,value) =>
     }
   });
 
+export const examstatuschange = async (authtoken,value) =>
+  await axios.post(process.env.REACT_APP_API + "/examstatuschange", value, {
+    headers:{
+      authtoken
+    }
+  });
+
 export const listexam = async (authtoken) =>
   await axios.get(process.env.REACT_APP_API + "/listexam", {
     headers: {

@@ -15,7 +15,7 @@ function Content() {
     const [dataMost, setDataMost] = useState([]);
     const [dataNew, setDataNew] = useState([]);
     const dispatch = useDispatch()
-    
+
 
     console.log(dataMost)
     console.log(dataNew)
@@ -41,20 +41,20 @@ function Content() {
     }
 
     function SeeExam(id, catid, category) {
-          if (role === "admin") {
+        if (role === "admin") {
             navigate("/admin/home")
-          } else {
+        } else {
             const EXAM = {
-              examid: id,
-              catid: catid,
-              category: category
+                examid: id,
+                catid: catid,
+                category: category
             }
             dispatch(checkin(EXAM))
             localStorage.setItem('examid', id)
             localStorage.setItem('catid', catid)
             navigate("/user/extest")
-          }
-      }
+        }
+    }
 
     return (
         <div className='mainBackground'>
@@ -75,13 +75,16 @@ function Content() {
                                     <p>
                                         {itemM.title}
                                     </p>
-                                    submitted : { itemM.Docount >= 0 ? <>{itemM.Docount}</> : <>0</> }
+                                    submitted : {itemM.Docount >= 0 ? <>{itemM.Docount}</> : <>0</>}
                                 </div>
                                 <hr />
-                                <div>{itemM.CAT.map((cat) =>
-                                    <button className="btn btn-primary" onClick={() => SeeExam(itemM._id, itemM.Categoryid, cat.name)}>
-                                        Enter
-                                    </button>)}
+                                <div>{itemM.CAT.map((cat,index) =>
+                                    <div key={index}>
+                                    {itemM.enable == true
+                                        ? <button type="submit" className="btn btn-primary" onClick={() => SeeExam(itemM._id, itemM.Categoryid, cat.name)}>Enter</button>
+                                        : <button type="submit" className="btn btn-danger" disabled>This exam now is fix</button>
+                                    }
+                                </div>)}
                                 </div>
                             </div>
                         )}
@@ -107,10 +110,14 @@ function Content() {
                                     {itemN.date.substring(0, 10)}
                                 </div>
                                 <hr />
-                                <div>{itemN.CAT.map((cat) =>
-                                    <button className="btn btn-primary" onClick={() => SeeExam(itemN._id, itemN.Categoryid, cat.name)}>
-                                        Enter
-                                    </button>)}
+                                <div>{itemN.CAT.map((cat, index) =>
+                                    <div key={index}>
+                                        {itemN.enable == true
+                                            ? <button type="submit" className="btn btn-primary" onClick={() => SeeExam(itemN._id, itemN.Categoryid, cat.name)}>Enter</button>
+                                            : <button type="submit" className="btn btn-danger" disabled>This exam now is fix</button>
+                                        }
+                                    </div>
+                                )}
                                 </div>
                             </div>
                         )}

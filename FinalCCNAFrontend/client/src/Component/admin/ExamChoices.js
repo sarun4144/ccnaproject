@@ -37,7 +37,7 @@ function ExamChoices() {
   const Catname = store.examStore.exam.category
   const Catid = store.examStore.exam.catid
 
-  console.log(Data)
+  // console.log(Data)
   useEffect(() => {
     loadData(EXid)
 
@@ -59,6 +59,10 @@ function ExamChoices() {
   }
 
   function AddExam(num) {
+    setValue({})
+    setValue2({})
+    setValue3({})
+    setValue4({images: []})
     const Num = {
       Num: num
     }
@@ -219,6 +223,10 @@ function ExamChoices() {
               icon: 'success',
               title: res.data
             })
+            setValue({})
+            setValue2({})
+            setValue3({})
+            setValue4({images: []})
             loadData(EXid)
           }).catch(err => {
             console.log(err);
@@ -418,7 +426,7 @@ function ExamChoices() {
       <div className="top-body">
         <div className="sticky-top" >
           <div className="form-check">
-            <input onChange={() => handleChange()} className="form-check-input" type="checkbox" />
+            <input checked={!isDisabled} onChange={() => handleChange()} className="form-check-input" type="checkbox" />
             <label className="form-check-label" >
               Edit mode
             </label>

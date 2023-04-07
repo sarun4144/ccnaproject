@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { listexam,removeExam} from "../Function/Exam";
+import { listexam, removeExam, examstatuschange } from "../Function/Exam";
 import { listCategory } from "../Function/Category";
 import { checkin } from "../Store/examSilce";
 import { checkout } from "../Store/examSilce";
@@ -9,6 +9,7 @@ import './Store.css';
 import Dropdown from 'react-bootstrap/Dropdown';
 import Swal from 'sweetalert2'
 import Confirm from "../Alert/Confirm"
+import Switch from '@mui/material/Switch';
 
 //Notify
 
@@ -26,7 +27,7 @@ function Store() {
   const [select, setSelect] = useState("");
 
   console.log(exame)
- 
+
   useEffect(() => {
     //code
     dispatch(checkout(null))
@@ -66,7 +67,7 @@ function Store() {
       icon: 'warning',
     }).then((result) => {
       if (result.isConfirmed) {
-      
+
         removeExam(id).then((res) => {
           console.log("Delete", res);
           Swal.fire({
@@ -84,19 +85,19 @@ function Store() {
 
   function SeeExam(id, catid, category) {
     // if (role) {
-      if (role === "admin") {
-        navigate("/admin/home")
-      } else {
-        const EXAM = {
-          examid: id,
-          catid: catid,
-          category: category
-        }
-        dispatch(checkin(EXAM))
-        localStorage.setItem('examid', id)
-        localStorage.setItem('catid', catid)
-        navigate("/user/extest")
+    if (role === "admin") {
+      navigate("/admin/home")
+    } else {
+      const EXAM = {
+        examid: id,
+        catid: catid,
+        category: category
       }
+      dispatch(checkin(EXAM))
+      localStorage.setItem('examid', id)
+      localStorage.setItem('catid', catid)
+      navigate("/user/extest")
+    }
     // } else {
     //   Swal.fire({
     //     position: 'top',
@@ -110,6 +111,29 @@ function Store() {
     //   navigate("/login")
     // }
   }
+
+  const examstatuschanges = (e, id) => {
+    const value = {
+      id: id,
+      enable: e.target.checked,
+    };
+    console.log(Token, value)
+    examstatuschange(Token, value).then((res) => {
+      Swal.fire({
+        title: 'Exam change',
+        text: res.data,
+        icon: 'success'
+      })
+      console.log(res.data)
+      loadData(Token);
+    }).catch((err) => {
+        console.log(err.response);
+      });
+
+  };
+
+
+
   const [catText, setDropDownText] = useState("Select Category");
   const filterExamList = exame.filter((exam) => {
     if (select === "") {
@@ -159,7 +183,12 @@ function Store() {
                     <h5>Creat at : {item.date}</h5>
                   </div>
                   <button type="submit" className="btn btn-warning" onClick={(id) => EditBTN(item._id, item.Categoryid, cat.name)}>Edit</button> &nbsp;
-                  <button type="submit" className="btn btn-danger" onClick={(id) => DeleteBTN(item._id)}>Delete</button>
+                  <button type="submit" className="btn btn-danger" onClick={(id) => DeleteBTN(item._id)}>Delete</button>&nbsp;
+                  <Switch checked={item.enable} color="success" onChange={(e) => examstatuschanges(e, item._id)} />&nbsp;
+                  {item.enable == true
+                    ? <span>Exam is on</span>
+                    : <span>Exam is off</span>
+                  }
                 </div>
               )}
             </div>
@@ -190,7 +219,7 @@ function Store() {
           <div key={i} className='store-card'>
             <form >
               <div className="form-group">
-              <div className="store-card-header"><h1>{item.name}</h1></div>
+                <div className="store-card-header"><h1>{item.name}</h1></div>
               </div>
               <div className="form-group">
                 <h4>{item.title}</h4>
@@ -201,9 +230,9 @@ function Store() {
                     <h5>Category : {cat.name}</h5>
                   </div>
                   {item.enable == true
-                  ? <button type="submit" className="btn btn-primary" onClick={() => SeeExam(item._id, item.Categoryid, cat.name)}>Enter</button>
-                  : <button type="submit" className="btn btn-danger" disabled>This exam now is fix</button>
-                }
+                    ? <button type="submit" className="btn btn-primary" onClick={() => SeeExam(item._id, item.Categoryid, cat.name)}>Enter</button>
+                    : <button type="submit" className="btn btn-danger" disabled>This exam now is fix</button>
+                  }
                 </div>
               )}
             </form>
@@ -235,7 +264,7 @@ function Store() {
         <div key={i} className='store-card'>
           <form >
             <div className="form-group">
-            <div className="store-card-header"><h1>{item.name}</h1></div>
+              <div className="store-card-header"><h1>{item.name}</h1></div>
             </div>
             <div className="form-group">
               <h4>{item.title}</h4>
@@ -245,9 +274,9 @@ function Store() {
                 <div className="form-group">
                   <h5>Category : {cat.name} </h5>
                 </div>
-                
-                   <button type="submit" className="btn btn-primary" onClick={() => SeeExam(item._id, item.Categoryid, cat.name)}>Enter</button>
-                 
+
+                <button type="submit" className="btn btn-primary" onClick={() => SeeExam(item._id, item.Categoryid, cat.name)}>Enter</button>
+
               </div>
             )}
           </form>
