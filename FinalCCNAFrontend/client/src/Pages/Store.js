@@ -186,8 +186,8 @@ function Store() {
                   <button type="submit" className="btn btn-danger" onClick={(id) => DeleteBTN(item._id)}>Delete</button>&nbsp;
                   <Switch checked={item.enable} color="success" onChange={(e) => examstatuschanges(e, item._id)} />&nbsp;
                   {item.enable == true
-                    ? <span>Exam is on</span>
-                    : <span>Exam is off</span>
+                    ? <span>Exam is oline</span>
+                    : <span>Exam is offline</span>
                   }
                 </div>
               )}

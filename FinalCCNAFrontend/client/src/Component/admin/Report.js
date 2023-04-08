@@ -14,6 +14,7 @@ function Report() {
 
   useEffect(() => {
     //code
+
     loadData();
   }, []);
 
@@ -66,7 +67,7 @@ function Report() {
             <table className="table">
               <thead className="Report-headerTable">
                 <tr>
-                  <th scope="col">Number</th>
+                  <th scope="col">Choice</th>
                   <th scope="col">Name</th>
                   <th scope="col">Username</th>
                   <th scope="col">Text</th>
@@ -77,7 +78,7 @@ function Report() {
 
                 {filterExamList.map((item, idex) => (
                   <>
-                    {Log.map((item2, idex2) =>
+                    {item.Log.map((item2, idex2) =>
                       <tr className="Report-table ">
                         <td>{item2.Number}</td>
                         <td>{item2.Name}</td>

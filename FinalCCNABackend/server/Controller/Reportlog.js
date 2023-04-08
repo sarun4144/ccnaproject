@@ -27,7 +27,7 @@ exports.Rerecordlist= async (req, res) => {
       res.status(500).send("Server Error!");
     }
   }
-exports.Repotlist= async (req, res) => {
+exports.Reportlist= async (req, res) => {
     var db = await CCNA.getDb();
     try {
            const Data= await db.collection('Report').find().toArray()
