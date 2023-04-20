@@ -4,11 +4,11 @@ import { Chart as ChartJS } from "chart.js/auto";
 import { FakeData } from './FakeData';
 import { useSelector } from "react-redux";
 import { EastlogS, Easylog } from "../../Function/Person"
-
+import Dropdown from 'react-bootstrap/Dropdown';
 const LineChart = () => {
     const user = useSelector((state) => ({ ...state }))
     const Userid = user.userStore.user.ObjectID
-
+    const [select, setSelect] = useState("");
     const [dataExamEasy, setDataExamEasy] = useState([]);
 
 
@@ -39,6 +39,37 @@ const LineChart = () => {
     }
 
     const DataName = Object.values(dataExamEasy);
+
+    const unique = DataName.filter(
+        (obj, index) =>
+            DataName.findIndex((item) => item.Examname === obj.Examname) === index
+    );
+
+
+    const filterExamList = DataName.filter((DataName) => {
+        if (select === "") {
+            return DataName[0];
+        } else {
+            return DataName.ExamObjectid === select;
+        }
+    })
+    const [avgscore,setavgscore] = useState("-")
+   async function averagescore(){
+        let i = 0
+        let score = 0
+        while(i < filterExamList.length){
+           score = score + filterExamList[i].Score
+           i++
+        }
+        if(i = filterExamList.length){
+            var sum = 0
+            sum = score/i
+            setavgscore(preve => Math.floor(sum))
+        }
+    }
+    useEffect(() => {
+        averagescore()
+    }, [select])
     /*console.log(DataName)*/
     // const [scoreData, setScoreData] = useState({
 
@@ -53,12 +84,12 @@ const LineChart = () => {
     //         }
     //     ]
     // })
-    const labelsL = DataName.slice(DataName.length - 5, DataName.length).map((data) => data.Examname);
+    const labelsL = filterExamList.map((data) => data.Examname);
     const dataEasyL = {
         labels: labelsL,
         datasets: [{
             label: 'Score',
-            data: DataName.slice(DataName.length - 5, DataName.length).map((data) => data.Score),
+            data: filterExamList.map((data) => data.Score),
             fill: true,
             backgroundColor: [
                 "rgba(75,192,192,0.45)"
@@ -68,12 +99,12 @@ const LineChart = () => {
             borderWidth: 2,
         }]
     };
-    const labelsS = DataName.map((data) => data.Examname);
+    const labelsS = filterExamList.map((data) => data.Examname);
     const dataEasyS = {
         labels: labelsS,
         datasets: [{
             label: 'Score',
-            data: DataName.map((data) => data.Score),
+            data: filterExamList.map((data) => data.Score),
             fill: true,
             backgroundColor: [
                 "rgba(75,192,192,0.45)"
@@ -83,9 +114,23 @@ const LineChart = () => {
             borderWidth: 2,
         }]
     };
-
+    const [catText, setDropDownText] = useState("Select Exame");
     return (
         <div>
+            <div className="cat-search-container">
+                <Dropdown>
+                    <Dropdown.Toggle variant="primary" id="dropdown-cat">
+                        {catText}
+                    </Dropdown.Toggle>
+                    <Dropdown.Menu>
+                        {unique.map((item, catindex) =>
+                            <Dropdown.Item key={catindex} as="button" onClick={(id) => { setSelect(item.ExamObjectid); setDropDownText(item.Examname) }}>{item.Examname}</Dropdown.Item>
+                        )}
+                    </Dropdown.Menu>
+                </Dropdown>
+                &nbsp;
+                <h5>Your easy average score is {avgscore}</h5>
+            </div>
             {DataName.length > 5 ?
                 <Line data={dataEasyL}></Line>
                 :

@@ -184,9 +184,13 @@ function ExamChoices() {
     console.log("value", value)
 
     try {
-      if (!CorrectANS) {
-        payload.CorrectANS = []
-      }
+      if (CorrectANS.length <1) {
+        Swal.fire({
+          title: 'Answer is empty',
+          text: 'Please select correct answer',
+          icon: 'error'
+        })
+      }else{
       if (!value2.Answerdetail) {
         payload.Answerdetail = Answerdetail
       } else {
@@ -232,7 +236,7 @@ function ExamChoices() {
             console.log(err);
           })
       }
-
+    }
     } catch (err) {
 
     }
