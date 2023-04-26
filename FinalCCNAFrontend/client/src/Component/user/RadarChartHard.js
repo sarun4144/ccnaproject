@@ -17,6 +17,8 @@ const RadarChartHard = () => {
     const [track, setTrack] = useState(false);
     const [disBtn, setDisBtn] = useState(false);
 
+    const Categorydata = []
+
     const [cat1Score, setCat1Score] = useState(0);
     const [cat2Score, setCat2Score] = useState(0);
     const [cat3Score, setCat3Score] = useState(0);
@@ -46,37 +48,37 @@ const RadarChartHard = () => {
     }
 
     const DataName = Object.values(dataExamHard);
-
+    console.log(DataName)
     function setScore() {
         /*setDataArray(category.map((data) => data.name));*/
         DataName.map((data) => {
-            if (data.Category === "Network Fundimental") { setCat1Score(preve => preve + data.Score) }
-            if (data.Category === "Network Access") { setCat2Score(preve => preve + data.Score) }
-            if (data.Category === "IP Connectivity") { setCat3Score(preve => preve + data.Score) }
-            if (data.Category === "IP Services") { setCat4Score(preve => preve + data.Score) }
-            if (data.Category === "Security Fundamentals") { setCat5Score(preve => preve + data.Score) }
-            if (data.Category === "Automaton and Programmability") { setCat6Score(preve => preve + data.Score) }
+            if (data.Category === "Network Fundimental") { setCat1Score(preve => preve + 1) }
+            if (data.Category === "Network Access") { setCat2Score(preve => preve + 1) }
+            if (data.Category === "IP Connectivity") { setCat3Score(preve => preve + 1) }
+            if (data.Category === "IP Services") { setCat4Score(preve => preve + 1) }
+            if (data.Category === "Security Fundamentals") { setCat5Score(preve => preve + 1) }
+            if (data.Category === "Automaton and Programmability") { setCat6Score(preve => preve + 1) }
         }
         )
         setTrack(true);
     }
 
-    /*const [scoreData, setScoreData] = useState({
-        labels: FakeData.map((data) => data.Category),
-        datasets: [
-            {
-                label: "Score",
-                data: FakeData.map((data) => data.Score),
-                backgroundColor: [
-                    "rgba(75,192,192,0.45)"
-                ],
-                borderColor: "skyblue",
-                borderWidth: 2,
-            }
-        ],
-    })*/
+    // const [scoreData, setScoreData] = useState({
+    //     labels: FakeData.map((data) => data.Category),
+    //     datasets: [
+    //         {
+    //             label: "Score",
+    //             data: FakeData.map((data) => data.Score),
+    //             backgroundColor: [
+    //                 "rgba(75,192,192,0.45)"
+    //             ],
+    //             borderColor: "skyblue",
+    //             borderWidth: 2,
+    //         }
+    //     ],
+    // })
 
-    const data = {
+    const scoreData = {
         labels: category.map((data) => data.name),
         datasets: [{
             label: 'Score',
@@ -94,7 +96,7 @@ const RadarChartHard = () => {
     return (
         <div>
             <button id="chartBtn" className="btn btn-primary" disabled={disBtn} onClick={() => [setScore(), setDisBtn(true)]}>Generate Chart</button>
-            <Radar data={data}></Radar>
+            <Radar data={scoreData}></Radar>
         </div>
     )
 }

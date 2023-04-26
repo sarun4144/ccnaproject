@@ -50,12 +50,12 @@ const RadarChart = () => {
     function setScore() {
         /*setDataArray(category.map((data) => data.name));*/
         DataName.map((data) => {
-            if(data.Category === "Network Fundimental"){ setCat1Score(preve => preve + data.Score)}
-            if(data.Category === "Network Access"){ setCat2Score(preve => preve + data.Score)}
-            if(data.Category === "IP Connectivity"){ setCat3Score(preve => preve + data.Score)}
-            if(data.Category === "IP Services"){ setCat4Score(preve => preve + data.Score)}
-            if(data.Category === "Security Fundamentals"){ setCat5Score(preve => preve + data.Score)}
-            if(data.Category === "Automaton and Programmability"){ setCat6Score(preve => preve + data.Score)}
+            if (data.Category === "Network Fundimental") { setCat1Score(preve => preve + 1) }
+            if (data.Category === "Network Access") { setCat2Score(preve => preve + 1) }
+            if (data.Category === "IP Connectivity") { setCat3Score(preve => preve + 1) }
+            if (data.Category === "IP Services") { setCat4Score(preve => preve + 1) }
+            if (data.Category === "Security Fundamentals") { setCat5Score(preve => preve + 1) }
+            if (data.Category === "Automaton and Programmability") { setCat6Score(preve => preve + 1) }
         }
         )
         setTrack(true);

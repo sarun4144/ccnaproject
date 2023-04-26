@@ -15,7 +15,7 @@ function ResultHard() {
     const [date, setDate] = useState("");
 
 
-    const DataHard = Object.values(dataExamHard);
+  
 
     console.log(dataExamHard)
     useEffect(() => {
