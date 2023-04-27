@@ -15,6 +15,9 @@ function Profile() {
   const user = useSelector((state) => ({ ...state }))
   const Userid = user.userStore.user.ObjectID
   const Token = user.userStore.user.token
+  const email = user.userStore.user.email
+  const role = user.userStore.user.role
+  const username = user.userStore.user.username
   const [data, setData] = useState([]);
   const [dataExamHard, setDataExamHard] = useState([]);
   const [dataExamEasy, setDataExamEasy] = useState([]);
@@ -28,7 +31,7 @@ function Profile() {
   const DataHard = Object.values(dataExamHard);
   const DataEasy = Object.values(dataExamEasy);
 
-  const [loading, setloading] = useState(false)
+  const [loading, setloading] = useState(true)
   //console.log(username)
   //console.log(role)
   // console.log(email)
@@ -57,7 +60,6 @@ function Profile() {
     if (data.length > 0) {
       setloading(false)
     }
-
   }, [data]);
 
   function loadData(authtoken, id) {
