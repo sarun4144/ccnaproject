@@ -63,12 +63,12 @@ function App() {
             ObjectID: localStorage.ObjectID
           }
           dispatch(login(user))
-          if(res.data.username !== null){
-            localStorage.setItem('username',res.data.username)
-          }
-          if(res.data.email !== null){
-            localStorage.setItem('gmail', res.data.email)
-          }
+          // if(res.data.username !== null){
+          //   localStorage.setItem('username',res.data.username)
+          // }
+          // if(res.data.email !== null){
+          //   localStorage.setItem('gmail', res.data.email)
+          // }
           console.log('Current-User', user)
         }).catch(err => {
           console.log(err);
