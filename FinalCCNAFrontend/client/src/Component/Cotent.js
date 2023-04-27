@@ -28,13 +28,17 @@ function Content() {
     }, []);
     useEffect(() => {
         //code
-        setloadingmost(false)
+        if(dataMost !== []){
+            setloadingmost(false)
+        }
+       
         // reads()
-
     }, [dataMost]);
     useEffect(() => {
         //code
-        setloadingdate(false)
+        if(dataNew !== []){
+            setloadingdate(false)
+        }
         // reads()
 
     }, [dataNew]);
