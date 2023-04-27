@@ -225,7 +225,7 @@ function ExamTestEasy() {
                 console.log(err);
             })
         } else {
-            console.log("SSSSSSSSSSSSSSSSSSSSSSSSS")
+            console.log("Save!!")
             CountStamp(Exid, payload2).then(res => {
                 console.log(res.data)
             }).catch(err => {
@@ -235,7 +235,7 @@ function ExamTestEasy() {
         HardRecord(Exid, payload)
             .then(res => {
                 Confirm.fire({
-                    title: 'ยืนยัน!!',
+                    title: 'บันทึกข้อสอบแล้ว!!',
                     text: "คุณต้องการจะทำข้อสอบอีกครั้งหรือไม่",
                     icon: 'sucess',
                 }).then((result) => {
