@@ -24,6 +24,9 @@ const UserSchema = new mongoose.Schema({
     date: {
         type: Date,
         default: Date.now
+    },
+    Log:{
+        
     }
 }, { timestamps: true });
 

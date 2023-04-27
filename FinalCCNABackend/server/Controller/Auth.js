@@ -36,6 +36,7 @@ exports.register = async (req, res) => {
     //   const serial = Math.random().toString().substring(2, 12)
     //   res.status(500).send("EMAIL SENDER SERVER ERROR !!! " + serial)
     // }
+    res.status(200).json("Regis complete")
   } catch (err) {
 
     // check error
