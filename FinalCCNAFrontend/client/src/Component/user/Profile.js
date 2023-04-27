@@ -32,6 +32,7 @@ function Profile() {
   const DataEasy = Object.values(dataExamEasy);
 
   const [loading, setloading] = useState(true)
+  const [loading2, setloading2] = useState(true)
   //console.log(username)
   //console.log(role)
   // console.log(email)
@@ -60,8 +61,8 @@ function Profile() {
   function loadData(authtoken, id) {
     reads(authtoken, id).then((res) => {
       setData(res.data);
-      setloading(false)
-      localStorage.setItem('username',res.data.username)
+      setloading2(false)
+      localStorage.setItem('username', res.data.username)
     });
   }
   function loadExamData(id) {
@@ -95,7 +96,7 @@ function Profile() {
             confirmButtonText: 'ยืนยัน',
             confirmButtonColor: 'green',
           })
-          setloading(true)
+          setloading2(true)
           loadData(Token, Userid)
         }).catch(err => {
           Swal.fire({
@@ -128,7 +129,16 @@ function Profile() {
                 <h1>User - Profile</h1>
               </div>
               <div className="profile-card-content">
-                <div>Username : {data.username} <AiIcons.AiFillEdit id="EditUsernameBtn" onClick={() => ShowEditUsername(Userid)} /></div>
+                {loading2 == true
+                  ? (<h1> Loading ...</h1>)
+                  : (
+                    <>
+
+                      <div>Username : {data.username} <AiIcons.AiFillEdit id="EditUsernameBtn" onClick={() => ShowEditUsername(Userid)} /></div>
+
+                    </>
+                  )
+                }
                 <div>Role : {role}</div>
                 <div>Email : {email}</div>
               </div>
