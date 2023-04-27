@@ -92,7 +92,7 @@ exports.Easylog = async (req, res) => {
   try {
     // Code
     let exname = await db.collection('users').findOne({ _id:ObjectId(id) })
-    if(exname.Log.Easy !== undefined){
+    if(exname.Log !== null){
       res.status(200).send(exname.Log.Easy);
     }else{
       res.status(200).send([]);
@@ -108,12 +108,11 @@ exports.Hardlog = async (req, res) => {
   try {
     // Code
     let exname = await db.collection('users').findOne({ _id:ObjectId(id)})
-    if(exname.Log.Hard !== undefined){
+    if(exname.Log !== null){
       res.status(200).send(exname.Log.Hard);
     }else{
       res.status(200).send([]);
     }
-   
   } catch (err) {
     console.log(err);
     res.status(500).send("Server Error! Hardlog");
