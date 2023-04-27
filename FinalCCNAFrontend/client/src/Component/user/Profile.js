@@ -44,16 +44,12 @@ function Profile() {
   useEffect(() => {
     if (Userid !== null) {
       loadData(Token, Userid)
-    }
-
-  }, [Userid])
-
-  useEffect(() => {
-    if (Userid !== null) {
       loadExamData(Userid)
       loadExamDataE(Userid)
     }
+
   }, [Userid])
+
 
   useEffect(() => {
     //code
