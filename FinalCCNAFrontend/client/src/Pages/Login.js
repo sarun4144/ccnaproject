@@ -46,6 +46,8 @@ function Login() {
       }
       dispatch(login(payload))
       localStorage.setItem('token', res.data.token)
+      localStorage.setItem('role', res.data.payload.user.role)
+      localStorage.setItem('ObjectID', res.data.payload.user.id)
       roleBaseRedirect(res.data.payload.user.role);
     })
       .catch((err) => {

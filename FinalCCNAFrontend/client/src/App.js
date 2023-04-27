@@ -58,12 +58,18 @@ function App() {
           const user = {
             token: idtoken,
             username: res.data.username,
-            role: res.data.role,
+            role:localStorage.role,
             email: res.data.email,
-            ObjectID: res.data._id
+            ObjectID: localStorage.ObjectID
           }
           dispatch(login(user))
-          console.log('Current-User', res)
+          if(res.data.username !== null){
+            localStorage.setItem('username',res.data.username)
+          }
+          if(res.data.email !== null){
+            localStorage.setItem('gmail', res.data.email)
+          }
+          console.log('Current-User', user)
         }).catch(err => {
           console.log(err);
         })
