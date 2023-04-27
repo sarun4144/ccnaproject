@@ -71,6 +71,7 @@ function Profile() {
   function loadExamDataE(id) {
     Easylog(id).then((res) => {
       setDataExamEasy(res.data);
+      setloading(false)
     });
   }
 
