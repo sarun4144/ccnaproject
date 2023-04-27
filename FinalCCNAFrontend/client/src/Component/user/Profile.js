@@ -47,7 +47,6 @@ function Profile() {
       loadExamData(Userid)
       loadExamDataE(Userid)
     }
-
   }, [Userid])
 
 
