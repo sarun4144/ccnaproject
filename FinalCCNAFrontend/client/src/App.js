@@ -63,7 +63,7 @@ function App() {
             ObjectID: res.data._id
           }
           dispatch(login(user))
-          console.log('Current-User', res.data)
+          console.log('Current-User', res)
         }).catch(err => {
           console.log(err);
         })

@@ -265,6 +265,7 @@ exports.Hardrecord = async (req, res) => {
     await db.collection('users').updateOne({ _id:ObjectId(UserID)}, { $set:{[str]:{ExamObjectid:ObjectId(ExamObjectid),Examname:Examname,Title:Title,Category:Category,
       Score:Score,Time:Time,Date:Date,Exam:Hard}}})
     res.status(200).send('ADD COMPLETE!!')
+    console.log("Hard add complete")
   } catch (err) {
     console.log(err);
     res.status(500).send("Server Error!");

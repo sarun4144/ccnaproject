@@ -257,6 +257,8 @@ function Store() {
       </div>
 
     )
+                }else{
+                  <>Loading ...</>
                 }
   } catch (error) {
     <div className='store-container'>

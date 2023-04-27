@@ -27,6 +27,8 @@ function Profile() {
   const navigate = useNavigate();
   const DataHard = Object.values(dataExamHard);
   const DataEasy = Object.values(dataExamEasy);
+
+  const [loading, setloading] = useState(false)
   //console.log(username)
   //console.log(role)
   // console.log(email)
@@ -37,13 +39,26 @@ function Profile() {
     localStorage.removeItem("Index")
   }, [])
   useEffect(() => {
-    loadData(Token, Userid)
+    if (Userid !== null) {
+      loadData(Token, Userid)
+    }
+
   }, [Userid])
 
   useEffect(() => {
-    loadExamData(Userid)
-    loadExamDataE(Userid)
+    if (Userid !== null) {
+      loadExamData(Userid)
+      loadExamDataE(Userid)
+    }
   }, [Userid])
+
+  useEffect(() => {
+    //code
+    if (exame.length > 0) {
+      setloading(false)
+    }
+
+  }, [data]);
 
   function loadData(authtoken, id) {
     reads(authtoken, id).then((res) => {
@@ -92,120 +107,126 @@ function Profile() {
   }
 
   function Seresult(index) {
-    localStorage.setItem("Index",index)
+    localStorage.setItem("Index", index)
     navigate("/user/ResultHard");
   }
   function SeresultEasy(index) {
-    localStorage.setItem("Index",index)
+    localStorage.setItem("Index", index)
     navigate("/user/ResultEasy");
   }
- 
+
   return (
     <div className="profile-container">
-      <div className="profile-card">
-        <div className="profile-card-header">
-          <h1>User - Profile</h1>
-        </div>
-        <div className="profile-card-content">
-          <div>Username : {data.username} <AiIcons.AiFillEdit id="EditUsernameBtn" onClick={() => ShowEditUsername(Userid)} /></div>
-          <div>Role : {data.role}</div>
-          <div>Email : {data.email}</div>
-        </div>
-      </div>
-      <div className="row">
-        <div className="col-md-6">
-          <div className="profile-card">
-            <div className="profile-card-header"><h1>Statistics - Line Chart</h1></div>
-            <button className="btn btn-success" onClick={() => setShowLine("easy")}>EASY</button>&nbsp;
-            <button className="btn btn-warning" onClick={() => setShowLine("hard")}>HARD</button>
-            <div className="profile-card-content">
-             <>{ showLine === "easy" ? <LineChart></LineChart> : <LineChartHard></LineChartHard>}</>
+      {loading == true
+        ? (<h1> Loading ...</h1>)
+        : (
+          <>
+            <div className="profile-card">
+              <div className="profile-card-header">
+                <h1>User - Profile</h1>
+              </div>
+              <div className="profile-card-content">
+                <div>Username : {data.username} <AiIcons.AiFillEdit id="EditUsernameBtn" onClick={() => ShowEditUsername(Userid)} /></div>
+                <div>Role : {data.role}</div>
+                <div>Email : {data.email}</div>
+              </div>
             </div>
-          </div>
-        </div>
-        <div className="col-md-6">
-          <div className="profile-card">
-            <div className="profile-card-header"><h1>Statistics - Radar Chart</h1></div>
-            <button className="btn btn-success" onClick={() => setShowRadar("easy")}>EASY</button>&nbsp;
-            <button className="btn btn-warning" onClick={() => setShowRadar("hard")}>HARD</button>
-            <div className="profile-card-content">
-              <>{ showRadar === "easy" ? <RadarChart></RadarChart> : <RadarChartHard></RadarChartHard>}</>
+            <div className="row">
+              <div className="col-md-6">
+                <div className="profile-card">
+                  <div className="profile-card-header"><h1>Statistics - Line Chart</h1></div>
+                  <button className="btn btn-success" onClick={() => setShowLine("easy")}>EASY</button>&nbsp;
+                  <button className="btn btn-warning" onClick={() => setShowLine("hard")}>HARD</button>
+                  <div className="profile-card-content">
+                    <>{showLine === "easy" ? <LineChart></LineChart> : <LineChartHard></LineChartHard>}</>
+                  </div>
+                </div>
+              </div>
+              <div className="col-md-6">
+                <div className="profile-card">
+                  <div className="profile-card-header"><h1>Statistics - Radar Chart</h1></div>
+                  <button className="btn btn-success" onClick={() => setShowRadar("easy")}>EASY</button>&nbsp;
+                  <button className="btn btn-warning" onClick={() => setShowRadar("hard")}>HARD</button>
+                  <div className="profile-card-content">
+                    <>{showRadar === "easy" ? <RadarChart></RadarChart> : <RadarChartHard></RadarChartHard>}</>
+                  </div>
+                </div>
+              </div>
             </div>
-          </div>
-        </div>
-      </div>
-      <div className="profile-card">
-        <div className="profile-card-header"><h1>History</h1></div>
-        <div className="row">
-          <div className="col-md-6" style={{ textAlign: "center" }}>
-            <h2>Easy</h2>
-            <div className="profile-card-content">
-              <Table className="table">
-                <thead>
-                  <tr>
-                    <th scope="col">ExamName</th>
-                    <th scope="col">Title</th>
-                    <th scope="col">Category</th>
-                    <th scope="col">Date</th>
-                    <th scope="col">Score</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {DataEasy.map((item, index) =>
-                    <tr key={index}>
-                      <td >
-                        <div className="SeeexamEasy" onClick={()=>SeresultEasy(index+1)}>
-                          {item.Examname}
-                        </div>
-                      </td>
-                      <td>{item.Title}</td>
-                      <td>{item.Category}</td>
-                      <td>{item.Date.substring(0, 24)}</td>
-                      <td>{item.Score}</td>
-                    </tr>
+            <div className="profile-card">
+              <div className="profile-card-header"><h1>History</h1></div>
+              <div className="row">
+                <div className="col-md-6" style={{ textAlign: "center" }}>
+                  <h2>Easy</h2>
+                  <div className="profile-card-content">
+                    <Table className="table">
+                      <thead>
+                        <tr>
+                          <th scope="col">ExamName</th>
+                          <th scope="col">Title</th>
+                          <th scope="col">Category</th>
+                          <th scope="col">Date</th>
+                          <th scope="col">Score</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {DataEasy.map((item, index) =>
+                          <tr key={index}>
+                            <td >
+                              <div className="SeeexamEasy" onClick={() => SeresultEasy(index + 1)}>
+                                {item.Examname}
+                              </div>
+                            </td>
+                            <td>{item.Title}</td>
+                            <td>{item.Category}</td>
+                            <td>{item.Date.substring(0, 24)}</td>
+                            <td>{item.Score}</td>
+                          </tr>
 
-                  )}
+                        )}
 
-                </tbody>
-              </Table>
+                      </tbody>
+                    </Table>
+                  </div>
+                </div>
+                <div className="col-md-6" style={{ textAlign: "center" }}>
+                  <h2>Hard</h2>
+                  <div className="profile-card-content">
+                    <Table className="table">
+                      <thead>
+                        <tr>
+                          <th scope="col">ExamName</th>
+                          <th scope="col">Title</th>
+                          <th scope="col">Category</th>
+                          <th scope="col">Time use</th>
+                          <th scope="col">Date</th>
+                          <th scope="col">Score</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {DataHard.map((item, index) =>
+                          <tr key={index}>
+                            <td >
+                              <div className="SeeexamHard" onClick={() => Seresult(index + 1)}>
+                                {item.Examname}
+                              </div>
+                            </td>
+                            <td>{item.Title}</td>
+                            <td>{item.Category}</td>
+                            <td>{item.Time}</td>
+                            <td>{item.Date.substring(0, 24)}</td>
+                            <td>{item.Score}</td>
+                          </tr>
+                        )}
+                      </tbody>
+                    </Table>
+                  </div>
+                </div>
+              </div>
             </div>
-          </div>
-          <div className="col-md-6" style={{ textAlign: "center" }}>
-            <h2>Hard</h2>
-            <div className="profile-card-content">
-              <Table className="table">
-                <thead>
-                  <tr>
-                    <th scope="col">ExamName</th>
-                    <th scope="col">Title</th>
-                    <th scope="col">Category</th>
-                    <th scope="col">Time use</th>
-                    <th scope="col">Date</th>
-                    <th scope="col">Score</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {DataHard.map((item, index) =>
-                    <tr key={index}>
-                      <td >
-                        <div className="SeeexamHard" onClick={() => Seresult(index+1)}>
-                          {item.Examname}
-                        </div>
-                      </td>
-                      <td>{item.Title}</td>
-                      <td>{item.Category}</td>
-                      <td>{item.Time}</td>
-                      <td>{item.Date.substring(0, 24)}</td>
-                      <td>{item.Score}</td>
-                    </tr>
-                  )}
-                </tbody>
-              </Table>
-            </div>
-          </div>
-        </div>
-      </div>
-      
+          </>
+        )
+      }
     </div>
   )
 }
