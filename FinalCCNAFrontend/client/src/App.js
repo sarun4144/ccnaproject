@@ -57,9 +57,9 @@ function App() {
         .then(res => {
           const user = {
             token: idtoken,
-            username: res.data.username,
+            username: localStorage.username,
             role:localStorage.role,
-            email: res.data.email,
+            email: localStorage.email,
             ObjectID: localStorage.ObjectID
           }
           dispatch(login(user))
