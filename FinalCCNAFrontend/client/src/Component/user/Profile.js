@@ -42,11 +42,11 @@ function Profile() {
   useEffect(() => {
     localStorage.removeItem("Index")
   }, [])
-  // useEffect(() => {
-  //   if (Userid !== null) {
-  //     loadData(Token, Userid)
-  //   }
-  // }, [Userid])
+  useEffect(() => {
+    if (Userid !== null) {
+      loadData(Token, Userid)
+    }
+  }, [Userid])
 
 
   useEffect(() => {
@@ -60,6 +60,7 @@ function Profile() {
   function loadData(authtoken, id) {
     reads(authtoken, id).then((res) => {
       setData(res.data);
+      setloading(false)
       localStorage.setItem('username',res.data.username)
     });
   }
@@ -94,6 +95,7 @@ function Profile() {
             confirmButtonText: 'ยืนยัน',
             confirmButtonColor: 'green',
           })
+          setloading(true)
           loadData(Token, Userid)
         }).catch(err => {
           Swal.fire({
@@ -126,7 +128,7 @@ function Profile() {
                 <h1>User - Profile</h1>
               </div>
               <div className="profile-card-content">
-                <div>Username : {username} <AiIcons.AiFillEdit id="EditUsernameBtn" onClick={() => ShowEditUsername(Userid)} /></div>
+                <div>Username : {data.username} <AiIcons.AiFillEdit id="EditUsernameBtn" onClick={() => ShowEditUsername(Userid)} /></div>
                 <div>Role : {role}</div>
                 <div>Email : {email}</div>
               </div>
