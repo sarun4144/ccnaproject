@@ -15,7 +15,8 @@ function Content() {
     const [dataMost, setDataMost] = useState([]);
     const [dataNew, setDataNew] = useState([]);
     const dispatch = useDispatch()
-
+    const [loadingmost, setloadingmost] = useState(true)
+    const [loadingdate, setloadingdate] = useState(true)
 
     console.log(dataMost)
     console.log(dataNew)
@@ -25,6 +26,18 @@ function Content() {
         // reads()
 
     }, []);
+    useEffect(() => {
+        //code
+        setloadingmost(false)
+        // reads()
+
+    }, [dataMost]);
+    useEffect(() => {
+        //code
+        setloadingdate(false)
+        // reads()
+
+    }, [dataNew]);
 
     const loadData = () => {
         listexamSort().then(res => {
@@ -32,6 +45,7 @@ function Content() {
         }).catch(err => {
             console.log(err.response.data)
         })
+
         listexamSortDate().then(res => {
             setDataNew(res.data)
         }).catch(err => {
@@ -59,35 +73,42 @@ function Content() {
     return (
         <div className='mainBackground'>
             <div className='content-container'>
-
                 <div className="content-con">
                     <div className="content-con-header"><h1>The Most Popular Exam</h1></div>
                     <div className="content-row">
-                        {dataMost.slice(0, 3).map((itemM, indexM) =>
-                            <div className="content-card">
-                                <div className="content-con-header">
-                                    <h2>
-                                        {indexM + 1} ) {itemM.name}
-                                    </h2>
-                                </div>
-                                <div className="content-Text">
+                        {loadingmost == true
+                            ? (<h1>Loading ...</h1>)
 
-                                    <p>
-                                        {itemM.title}
-                                    </p>
-                                    submitted : {itemM.Docount >= 0 ? <>{itemM.Docount}</> : <>0</>}
-                                </div>
-                                <hr />
-                                <div>{itemM.CAT.map((cat,index) =>
-                                    <div key={index}>
-                                    {itemM.enable == true
-                                        ? <button type="submit" className="btn btn-primary" onClick={() => SeeExam(itemM._id, itemM.Categoryid, cat.name)}>Enter</button>
-                                        : <button type="submit" className="btn btn-danger" disabled>This exam now is fix</button>
-                                    }
-                                </div>)}
-                                </div>
-                            </div>
-                        )}
+                            : (
+                                <>
+                                    {dataMost.slice(0, 3).map((itemM, indexM) =>
+                                        <div className="content-card">
+                                            <div className="content-con-header">
+                                                <h2>
+                                                    {indexM + 1} ) {itemM.name}
+                                                </h2>
+                                            </div>
+                                            <div className="content-Text">
+
+                                                <p>
+                                                    {itemM.title}
+                                                </p>
+                                                submitted : {itemM.Docount >= 0 ? <>{itemM.Docount}</> : <>0</>}
+                                            </div>
+                                            <hr />
+                                            <div>{itemM.CAT.map((cat, index) =>
+                                                <div key={index}>
+                                                    {itemM.enable == true
+                                                        ? <button type="submit" className="btn btn-primary" onClick={() => SeeExam(itemM._id, itemM.Categoryid, cat.name)}>Enter</button>
+                                                        : <button type="submit" className="btn btn-danger" disabled>This exam now is fix</button>
+                                                    }
+                                                </div>)}
+                                            </div>
+                                        </div>
+                                    )}
+                                </>
+                            )
+                        }
                     </div>
 
                 </div>
@@ -95,32 +116,40 @@ function Content() {
                 <div className="content-con">
                     <div className="content-con-header"><h1>The Newest Exam</h1></div>
                     <div className="content-row">
-                        {dataNew.slice(0, 3).map((itemN, indexN) =>
-                            <div className="content-card">
-                                <div className="content-con-header">
-                                    <h2>
-                                        {indexN + 1}  {itemN.name}
-                                    </h2>
-                                </div>
-                                <div className="content-Text">
+                        {loadingdate == true
+                            ? (<h1>Loading ...</h1>)
 
-                                    <p>
-                                        {itemN.title}
-                                    </p>
-                                    {itemN.date.substring(0, 10)}
-                                </div>
-                                <hr />
-                                <div>{itemN.CAT.map((cat, index) =>
-                                    <div key={index}>
-                                        {itemN.enable == true
-                                            ? <button type="submit" className="btn btn-primary" onClick={() => SeeExam(itemN._id, itemN.Categoryid, cat.name)}>Enter</button>
-                                            : <button type="submit" className="btn btn-danger" disabled>This exam now is fix</button>
-                                        }
-                                    </div>
-                                )}
-                                </div>
-                            </div>
-                        )}
+                            : (
+                                <>
+                                    {dataNew.slice(0, 3).map((itemN, indexN) =>
+                                        <div className="content-card">
+                                            <div className="content-con-header">
+                                                <h2>
+                                                    {indexN + 1}  {itemN.name}
+                                                </h2>
+                                            </div>
+                                            <div className="content-Text">
+
+                                                <p>
+                                                    {itemN.title}
+                                                </p>
+                                                {itemN.date.substring(0, 10)}
+                                            </div>
+                                            <hr />
+                                            <div>{itemN.CAT.map((cat, index) =>
+                                                <div key={index}>
+                                                    {itemN.enable == true
+                                                        ? <button type="submit" className="btn btn-primary" onClick={() => SeeExam(itemN._id, itemN.Categoryid, cat.name)}>Enter</button>
+                                                        : <button type="submit" className="btn btn-danger" disabled>This exam now is fix</button>
+                                                    }
+                                                </div>
+                                            )}
+                                            </div>
+                                        </div>
+                                    )}
+                                </>
+                            )
+                        }
                     </div>
 
                 </div>
