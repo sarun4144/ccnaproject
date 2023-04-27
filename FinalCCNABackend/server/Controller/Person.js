@@ -92,9 +92,9 @@ exports.Easylog = async (req, res) => {
   try {
     // Code
     let exname = await db.collection('users').findOne({ _id:ObjectId(id) })
-    if( exname.log !== undefined){  
+    if( exname.Log !== undefined){  
       if(exname.Log.Hard !== undefined){
-        res.status(200).send(exname.Log.Hard);
+        res.status(200).send(exname.Log.Easy);
       }else{
         res.status(200).send([]);
       }
@@ -112,7 +112,7 @@ exports.Hardlog = async (req, res) => {
   try {
     // Code
     let exname = await db.collection('users').findOne({ _id:ObjectId(id)})
-    if(exname.log !== undefined){
+    if(exname.Log !== undefined){
       if(exname.Log.Hard !== undefined){
         res.status(200).send(exname.Log.Hard);
       }else{
