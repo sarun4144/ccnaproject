@@ -28,7 +28,7 @@ function Content() {
     }, []);
     useEffect(() => {
         //code
-        if(dataMost !== []){
+        if(dataMost.length > 0){
             setloadingmost(false)
         }
        
@@ -36,7 +36,7 @@ function Content() {
     }, [dataMost]);
     useEffect(() => {
         //code
-        if(dataNew !== []){
+        if(dataNew .length > 0){
             setloadingdate(false)
         }
         // reads()

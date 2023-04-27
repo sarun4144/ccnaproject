@@ -25,15 +25,30 @@ function Store() {
   const role = user.userStore.user.role
   const [category, setCat] = useState([]);
   const [select, setSelect] = useState("");
+  const [loading, setloading] = useState(true)
 
-  console.log(exame)
+
+  console.log("Role",role)
 
   useEffect(() => {
     //code
-    dispatch(checkout(null))
-    loadData(Token)
+    if(Token !== null){
+      dispatch(checkout(null))
+      loadData(Token)
+    }
+    
   }, [Token, dispatch]);
 
+  useEffect(() => {
+    //code
+    if(exame.length >0){
+      setloading(false)
+    }
+    
+  }, [exame,category]);
+
+
+  
   const loadData = (authtoken) => {
     listexam(authtoken).then(res => {
       setData(res.data)
@@ -144,6 +159,7 @@ function Store() {
   })
 
   try {
+    if(loading == false){
     if (user.userStore.user.role === 'admin') {
       return (
         <div className='store-container'>
@@ -241,6 +257,7 @@ function Store() {
       </div>
 
     )
+                }
   } catch (error) {
     <div className='store-container'>
       <div className="store-header">Exam List</div>
