@@ -13,7 +13,7 @@ import { useNavigate } from "react-router-dom";
 
 function Profile() {
   const user = useSelector((state) => ({ ...state }))
-  const Userid = user.userStore.user.ObjectID
+  const Userid = localStorage.ObjectID
   const Token = user.userStore.user.token
   const email = user.userStore.user.email
   const role = user.userStore.user.role
@@ -41,26 +41,25 @@ function Profile() {
   useEffect(() => {
     localStorage.removeItem("Index")
   }, [])
-  useEffect(() => {
-    if (Userid !== null) {
-      loadData(Token, Userid)
-     
-    }
-  }, [Userid])
+  // useEffect(() => {
+  //   if (Userid !== null) {
+  //     loadData(Token, Userid)
+  //   }
+  // }, [Userid])
 
 
   useEffect(() => {
     //code
-    if (data !== null) {
+    if (Userid !== null) {
       loadExamData(Userid)
       loadExamDataE(Userid)
     }
-  }, [data]);
+  }, [Userid]);
 
   function loadData(authtoken, id) {
     reads(authtoken, id).then((res) => {
       setData(res.data);
-      
+      localStorage.setItem('username',res.data.username)
     });
   }
   function loadExamData(id) {
@@ -125,9 +124,9 @@ function Profile() {
                 <h1>User - Profile</h1>
               </div>
               <div className="profile-card-content">
-                <div>Username : {data.username} <AiIcons.AiFillEdit id="EditUsernameBtn" onClick={() => ShowEditUsername(Userid)} /></div>
-                <div>Role : {data.role}</div>
-                <div>Email : {data.email}</div>
+                <div>Username : {username} <AiIcons.AiFillEdit id="EditUsernameBtn" onClick={() => ShowEditUsername(Userid)} /></div>
+                <div>Role : {role}</div>
+                <div>Email : {email}</div>
               </div>
             </div>
             <div className="row">

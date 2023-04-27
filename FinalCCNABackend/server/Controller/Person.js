@@ -107,7 +107,7 @@ exports.Hardlog = async (req, res) => {
     res.status(200).send(exname.Log.Hard);
   } catch (err) {
     console.log(err);
-    res.status(500).send("Server Error!");
+    res.status(500).send("Server Error!",err);
   }
 };
 exports.HardlogS = async (req, res) => {
@@ -120,7 +120,7 @@ exports.HardlogS = async (req, res) => {
     res.status(200).send(exname.Log.Hard[Index]);
   } catch (err) {
     console.log(err);
-    res.status(500).send("Server Error!");
+    res.status(500).send("Server Error!",err);
   }
 };
 exports.EasylogS = async (req, res) => {
@@ -133,7 +133,7 @@ exports.EasylogS = async (req, res) => {
     res.status(200).send(exname.Log.Easy[Index]);
   } catch (err) {
     console.log(err);
-    res.status(500).send("Server Error!");
+    res.status(500).send("Server Error!",err);
   }
 };
 exports.ChangeName = async (req, res) => {
