@@ -54,7 +54,7 @@ function Profile() {
 
   useEffect(() => {
     //code
-    if (exame.length > 0) {
+    if (data.length > 0) {
       setloading(false)
     }
 
