@@ -44,22 +44,28 @@ function Profile() {
   useEffect(() => {
     if (Userid !== null) {
       loadData(Token, Userid)
-      loadExamData(Userid)
-      loadExamDataE(Userid)
+      // loadExamData(Userid)
+      // loadExamDataE(Userid)
     }
   }, [Userid])
 
 
-  useEffect(() => {
-    //code
-    if (data.length > 0) {
-      setloading(false)
-    }
-  }, [data]);
+  // useEffect(() => {
+  //   //code
+  //   if (dataExamHard.length > 0) {
+  //     setloading(false)
+  //   }
+  // }, [data]);
 
   function loadData(authtoken, id) {
     reads(authtoken, id).then((res) => {
       setData(res.data);
+      loadExamData(Userid).then((res) => {
+        loadExamDataE(Userid).then((res) => {
+          setloading(false)
+        })
+      })
+    
     });
   }
   function loadExamData(id) {
