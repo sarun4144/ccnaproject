@@ -25,17 +25,20 @@ exports.register = async (req, res) => {
 
     const Regisuser = await User.findOne({ email: email })
     console.log("RGISTER_ID", Regisuser)
-    try {
-      sendemail(email, username, Regisuser._id)
-      res.status(200).json(
-        "สมัครสมาชิกสำเร็จตรวจสอบ email เพื่อยืนยันตัวตน (อาจจะถูกส่งมาใน junk mail)"
-      );
-    } catch (err) {
-      console.log("Email ERROE", err)
-      const serial = Math.random().toString().substring(2, 12)
-      res.status(500).send("EMAIL SENDER SERVER ERROR !!! " + serial)
-    }
-    // res.status(200).json("Regis complete")
+    // try {
+    //   await sendemail(email, username, Regisuser._id)
+    //   res.status(200).json(
+    //     "สมัครสมาชิกสำเร็จตรวจสอบ email เพื่อยืนยันตัวตน (อาจจะถูกส่งมาใน junk mail)"
+    //   );
+    // } catch (err) {
+    //   console.log("Email ERROE", err)
+    //   const serial = Math.random().toString().substring(2, 12)
+    //   res.status(500).send("EMAIL SENDER SERVER ERROR !!! " + serial)
+    // }
+    res.status(200).json({
+      msg :"สมัครสมาชิกสำเร็จตรวจสอบ email เพื่อยืนยันตัวตน (อาจจะถูกส่งมาใน junk mail)",
+      id : Regisuser._id
+   });
   } catch (err) {
 
     // check error

@@ -5,6 +5,7 @@ import Swal from 'sweetalert2'
 import Toast from "../Alert/Success";
 import './Register.css'
 
+import emailjs from "@emailjs/browser"
 function Register() {
     const navigate = useNavigate();
     const [value, setValue] = useState({
@@ -35,10 +36,20 @@ function Register() {
                 Toast.fire({
                     position: 'top-end',
                     icon: 'success',
-                    title: res.data
+                    title: res.data.msg
                 })
-                console.log(res)
-                navigate("/login")
+                var templateParams = {
+                    usarname: value.username,
+                    contact: res.data.id,
+                    Email : value.email
+                };
+                emailjs.send('service_3h307as', 'template_4up9nsw', templateParams,'LOVtJDgR8lz-dXhtv')
+                    .then(function (response) {
+                        navigate("/login")
+                    }, function (error) {
+                        console.log('FAILED...', error);
+                    });
+
             })
                 .catch((err) => {
                     Swal.fire({
@@ -68,7 +79,7 @@ function Register() {
                         <form onSubmit={handleSubmit}>
                             <div className="form-group" >
                                 <label>Username: </label>
-                                <input className="form-control" type="text" name="username" autoFocus placeholder="Username" onChange={handleChange}required />
+                                <input className="form-control" type="text" name="username" autoFocus placeholder="Username" onChange={handleChange} required />
                             </div>
                             <br />
                             <div className="form-group">
@@ -83,7 +94,7 @@ function Register() {
                             <br />
                             <div className="form-group">
                                 <label >Email : </label>
-                                <input className="form-control" type="email" name="email" placeholder="Email" onChange={handleChange} required/>
+                                <input className="form-control" type="email" name="email" placeholder="Email" onChange={handleChange} required />
                             </div>
 
                             <br />
