@@ -27,10 +27,9 @@ exports.register = async (req, res) => {
     console.log("RGISTER_ID", Regisuser)
     try {
       sendemail(email, username, Regisuser._id)
-      res.status(200).json({
-        msg: "Register Complete!!",
-        msg2: "Verifycation link has been send to",
-      });
+      res.status(200).json(
+        "สมัครสมาชิกสำเร็จตรวจสอบ email เพื่อยืนยันตัวตน (อาจจะถูกส่งมาใน junk mail)"
+      );
     } catch (err) {
       console.log("Email ERROE", err)
       const serial = Math.random().toString().substring(2, 12)
