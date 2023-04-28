@@ -43,15 +43,14 @@ function Register() {
                     contact: res.data.id,
                     Email : value.email
                 };
-                emailjs.send('service_3h307as', 'template_4up9nsw', templateParams,'LOVtJDgR8lz-dXhtv')
+                emailjs.send(process.env.EMAILJS_SERVICE, process.env.EMAILJS_TEMPLATE, templateParams,process.env.EMAILJS_PUBLIC)
                     .then(function (response) {
                         navigate("/login")
                     }, function (error) {
                         console.log('FAILED...', error);
                     });
 
-            })
-                .catch((err) => {
+            }).catch((err) => {
                     Swal.fire({
                         position: 'top',
                         title: 'Error!',

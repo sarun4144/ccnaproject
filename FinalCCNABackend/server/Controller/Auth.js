@@ -40,10 +40,9 @@ exports.register = async (req, res) => {
       id : Regisuser._id
    });
   } catch (err) {
-
     // check error
     console.log(err.message);
-    res.status(500).send('Server Error');
+    res.status(500).json('Server Error');
   }
 
 
