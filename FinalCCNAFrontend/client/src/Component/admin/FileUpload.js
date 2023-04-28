@@ -22,7 +22,7 @@ function FileUpload({ values, setValues, loading, setLoad }) {
                     (uri) => {
                         axios
                             .post(
-                                process.env.REACT_APP_API + "/images",
+                                process.env.REACT_APP_API_CLOUD + "/images",
                                 {
                                     image: uri,
                                 },
@@ -54,7 +54,7 @@ function FileUpload({ values, setValues, loading, setLoad }) {
     console.log(images);
     axios
       .post(
-        process.env.REACT_APP_API + "/removeimages",
+        process.env.REACT_APP_API_CLOUD + "/removeimages",
         { public_id },
         {
           headers: {

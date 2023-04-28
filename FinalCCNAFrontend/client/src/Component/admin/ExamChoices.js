@@ -342,7 +342,7 @@ function ExamChoices() {
     // const img = values.images
     axios
       .post(
-        process.env.REACT_APP_API + "/removeimages",
+        process.env.REACT_APP_API_CLOUD + "/removeimages",
         { public_id },
         {
           headers: {
