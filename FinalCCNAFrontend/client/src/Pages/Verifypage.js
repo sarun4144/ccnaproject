@@ -56,19 +56,19 @@ function Loadingpage() {
                             <>
                                 <h1>{data}</h1>
                                 <h1 className="success-verify">✓</h1>
-                                <h2>
-                                    <a href="http://ccnafront.ver.app/login">Click here to login</a>
-                                </h2>
+                                {/* <h2>
+                                    <a href="https://ccnafront.ver.app/login">Click here to login</a>
+                                </h2> */}
                             </>
                         ) : (
                             <>
                                 <h1>{data}</h1>
                                 <h1 className="unsuccess-verify">𐄂</h1>
-                                <h2>
-                                    <a href="http://ccnafront.ver.app/register">
+                                {/* <h2>
+                                    <a href="https://ccnafront.ver.app/register">
                                         Click here to Register
                                     </a>
-                                </h2>
+                                </h2> */}
                             </>
                         )}
                     </>
