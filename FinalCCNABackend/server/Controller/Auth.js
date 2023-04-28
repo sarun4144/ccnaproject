@@ -23,20 +23,20 @@ exports.register = async (req, res) => {
     user.password = await bcrypt.hash(password, cracker);
     await user.save();
 
-    // const Regisuser = await User.findOne({ email: email })
-    // console.log("RGISTER_ID", Regisuser)
-    // try {
-    //   sendemail(email, username, Regisuser._id)
-    //   res.status(200).json({
-    //     msg: "Register Complete!!",
-    //     msg2: "Verifycation link has been send to",
-    //   });
-    // } catch (err) {
-    //   console.log("Email ERROE", err)
-    //   const serial = Math.random().toString().substring(2, 12)
-    //   res.status(500).send("EMAIL SENDER SERVER ERROR !!! " + serial)
-    // }
-    res.status(200).json("Regis complete")
+    const Regisuser = await User.findOne({ email: email })
+    console.log("RGISTER_ID", Regisuser)
+    try {
+      sendemail(email, username, Regisuser._id)
+      res.status(200).json({
+        msg: "Register Complete!!",
+        msg2: "Verifycation link has been send to",
+      });
+    } catch (err) {
+      console.log("Email ERROE", err)
+      const serial = Math.random().toString().substring(2, 12)
+      res.status(500).send("EMAIL SENDER SERVER ERROR !!! " + serial)
+    }
+    // res.status(200).json("Regis complete")
   } catch (err) {
 
     // check error

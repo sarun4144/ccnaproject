@@ -236,26 +236,10 @@ function ExamTestEasy() {
             .then(res => {
                 Confirm.fire({
                     title: 'บันทึกข้อสอบแล้ว!!',
-                    text: "คุณต้องการจะทำข้อสอบอีกครั้งหรือไม่",
+                    text: "กลับไปหน้าเริ่มทำข้อสอบหรือไม่",
                     icon: 'sucess',
                 }).then((result) => {
                     if (result.isConfirmed) {
-                        Swal.fire({
-                            title: 'Do it again',
-                            text: 'Enjoy',
-                            icon: 'success'
-                        })
-                        setScore(preve => 0);
-                        localStorage.setItem("score", 0)
-                        setCurrentQuestion(preve => 0);
-                        localStorage.setItem("currentQuestion", 0)
-                        setShowResults(false);
-                        localStorage.setItem("showresult", false)
-                        setRecord(false);
-                        localStorage.setItem("result", 0)
-                        setANSiscorrect(false)
-                        setAnswerdetail(false)
-                    } else {
                         setScore(preve => 0);
                         localStorage.setItem("score", 0)
                         setCurrentQuestion(preve => 0);
@@ -267,6 +251,18 @@ function ExamTestEasy() {
                         setANSiscorrect(false)
                         setAnswerdetail(false)
                         navigate("/user/extest")
+                    } else {
+                        setScore(preve => 0);
+                        localStorage.setItem("score", 0)
+                        setCurrentQuestion(preve => 0);
+                        localStorage.setItem("currentQuestion", 0)
+                        setShowResults(false);
+                        localStorage.setItem("showresult", false)
+                        setRecord(false);
+                        localStorage.setItem("result", 0)
+                        setANSiscorrect(false)
+                        setAnswerdetail(false)
+                        navigate("/")
                     }
                 })
             }).catch(err => {

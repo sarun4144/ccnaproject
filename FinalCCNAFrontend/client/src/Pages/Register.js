@@ -35,7 +35,7 @@ function Register() {
                 Toast.fire({
                     position: 'top-end',
                     icon: 'success',
-                    title: 'สมัครสมาชิกสำเร็จโปรดรอ Admin อณุมัติ'
+                    title: 'สมัครสมาชิกสำเร็จตรวจสอบ email เพื่อยืนยันตัวตน (อาจจะถูกส่งมาใน junk mail)'
                 })
                 console.log(res)
                 navigate("/login")

@@ -133,9 +133,7 @@ function Profile() {
                   ? (<h1> Loading ...</h1>)
                   : (
                     <>
-
                       <div>Username : {data.username} <AiIcons.AiFillEdit id="EditUsernameBtn" onClick={() => ShowEditUsername(Userid)} /></div>
-
                     </>
                   )
                 }

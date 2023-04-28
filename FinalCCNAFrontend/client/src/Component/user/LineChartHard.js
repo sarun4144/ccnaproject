@@ -113,8 +113,10 @@ const LineChartHard = () => {
                     </Dropdown.Menu>
                 </Dropdown>
                 &nbsp;
-                <h5>Your hard average score is {avgscore}</h5>
             </div>
+            <>
+            &nbsp; &nbsp; <h5>Your hard average score is {avgscore}</h5>
+            </>
         <div>
             {DataName.length > 5 ?
                 <Line data={dataHardL}></Line>
