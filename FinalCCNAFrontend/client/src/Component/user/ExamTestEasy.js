@@ -202,27 +202,11 @@ function ExamTestEasy() {
     EasyRecord(Exid, payload)
       .then(res => {
         Confirm.fire({
-          title: 'ยืนยัน!!',
-          text: res.data,
+          title: 'บันทึกข้อสอบแล้ว!!',
+          text: "กลับไปหน้าเริ่มทำข้อสอบหรือไม่",
           icon: 'sucess',
         }).then((result) => {
           if (result.isConfirmed) {
-            Swal.fire({
-              title: 'Do it again',
-              text: 'Enjoy',
-              icon: 'success'
-            })
-            setScore(preve => 0);
-            localStorage.setItem("score", 0)
-            setCurrentQuestion(preve => 0);
-            localStorage.setItem("currentQuestion", 0)
-            setShowResults(false);
-            localStorage.setItem("showresult", false)
-            setRecord(false);
-            localStorage.setItem("result", 0)
-            setANSiscorrect(false)
-            setAnswerdetail(false)
-          } else {
             setScore(preve => 0);
             localStorage.setItem("score", 0)
             setCurrentQuestion(preve => 0);
@@ -234,6 +218,18 @@ function ExamTestEasy() {
             setANSiscorrect(false)
             setAnswerdetail(false)
             navigate("/user/extest")
+          } else {
+            setScore(preve => 0);
+            localStorage.setItem("score", 0)
+            setCurrentQuestion(preve => 0);
+            localStorage.setItem("currentQuestion", 0)
+            setShowResults(false);
+            localStorage.setItem("showresult", false)
+            setRecord(false);
+            localStorage.setItem("result", 0)
+            setANSiscorrect(false)
+            setAnswerdetail(false)
+            navigate("/")
           }
         })
 

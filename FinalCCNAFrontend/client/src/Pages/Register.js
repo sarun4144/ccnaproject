@@ -55,7 +55,7 @@ function Register() {
                     Swal.fire({
                         position: 'top',
                         title: 'Error!',
-                        text: err.response,
+                        text: err.response.data,
                         icon: 'error',
                         iconColor: 'Red',
                         confirmButtonColor: '#3085d6',

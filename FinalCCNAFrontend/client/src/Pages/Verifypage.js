@@ -57,7 +57,7 @@ function Loadingpage() {
                                 <h1>{data}</h1>
                                 <h1 className="success-verify">✓</h1>
                                 <h2>
-                                    <a href="http://localhost:3000/login">Click here to login</a>
+                                    <a href="http://ccnafront.ver.app/login">Click here to login</a>
                                 </h2>
                             </>
                         ) : (
@@ -65,7 +65,7 @@ function Loadingpage() {
                                 <h1>{data}</h1>
                                 <h1 className="unsuccess-verify">𐄂</h1>
                                 <h2>
-                                    <a href="http://localhost:3000/register">
+                                    <a href="http://ccnafront.ver.app/register">
                                         Click here to Register
                                     </a>
                                 </h2>
