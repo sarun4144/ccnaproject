@@ -20,7 +20,7 @@ function Register() {
         })
     }
 
-    const handleSubmit = (e) => {
+    const  handleSubmit = async (e) => {
         e.preventDefault()
         console.log(value);
         if (value.password !== value.conpassword) {
@@ -33,28 +33,29 @@ function Register() {
             })
         } else {
             register(value).then((res) => {
-                Toast.fire({
-                    position: 'top-end',
-                    icon: 'success',
-                    title: res.data.msg
-                })
-                var templateParams = {
+               var templateParams = {
                     usarname: value.username,
                     contact: res.data.id,
-                    Email : value.email
+                    email : value.email
                 };
-                emailjs.send(process.env.EMAILJS_SERVICE, process.env.EMAILJS_TEMPLATE, templateParams,process.env.EMAILJS_PUBLIC)
+                emailjs.send(process.env.REACT_APP_SERVICE_ID, process.env.REACT_APP_TEMPLATE_ID, templateParams,process.env.REACT_APP_PUBLIC_KEY)
                     .then(function (response) {
+                        Toast.fire({
+                            position: 'top-end',
+                            icon: 'success',
+                            title: res.data.msg
+                        })
                         navigate("/login")
                     }, function (error) {
                         console.log('FAILED...', error);
                     });
 
             }).catch((err) => {
+                    console.log(err)
                     Swal.fire({
                         position: 'top',
                         title: 'Error!',
-                        text: err.response.data,
+                        text: err.response,
                         icon: 'error',
                         iconColor: 'Red',
                         confirmButtonColor: '#3085d6',
@@ -63,6 +64,7 @@ function Register() {
                 });
         }
     }
+    
     return (
         <div className="container">
             <div className="row" >

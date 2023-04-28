@@ -42,10 +42,8 @@ exports.register = async (req, res) => {
   } catch (err) {
     // check error
     console.log(err.message);
-    res.status(500).json('Server Error');
+    res.status(500).send('Server Error Register');
   }
-
-
 }
 exports.login = async (req, res) => {
   try {
