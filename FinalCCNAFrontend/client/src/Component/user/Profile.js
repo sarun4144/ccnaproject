@@ -21,6 +21,9 @@ function Profile() {
   const [data, setData] = useState([]);
   const [dataExamHard, setDataExamHard] = useState([]);
   const [dataExamEasy, setDataExamEasy] = useState([]);
+  
+  const [Linetext, setLinetext] = useState("เลือกความยากและชุดข้อสอบเพื่อแสดงกราฟ");
+  const [Radartext, setRadartext] = useState("เลือกความยากเพื่อแสดงกราฟ");
 
   const [showLine, setShowLine] = useState("easy");
   const [showRadar, setShowRadar] = useState("easy")
@@ -144,9 +147,9 @@ function Profile() {
             <div className="row">
               <div className="col-md-6">
                 <div className="profile-card">
-                  <div className="profile-card-header"><h2>Chart แสดงคะแนนเฉลี่ย</h2></div>
-                  <button className="btn btn-success" onClick={() => setShowLine("easy")}>EASY</button>&nbsp;
-                  <button className="btn btn-warning" onClick={() => setShowLine("hard")}>HARD</button>
+                  <div className="profile-card-header"><h2>{Linetext}</h2></div>
+                  <button className="btn btn-success" onClick={() => {setShowLine("easy");setLinetext("Chart แสดงคะแนนเฉลี่ยระดับ Easy")}}>EASY</button>&nbsp;
+                  <button className="btn btn-warning" onClick={() => {setShowLine("hard");setLinetext("Chart แสดงคะแนนเฉลี่ยระดับ Hard")}}>HARD</button>
                   <div className="profile-card-content">
                     <>{showLine === "easy" ? <LineChart></LineChart> : <LineChartHard></LineChartHard>}</>
                   </div>
@@ -154,9 +157,9 @@ function Profile() {
               </div>
               <div className="col-md-6">
                 <div className="profile-card">
-                  <div className="profile-card-header"><h3>Chart แสดงจำนวนครั้งที่ทำข้อสอบในแต่ละหมวดหมู่</h3></div>
-                  <button className="btn btn-success" onClick={() => setShowRadar("easy")}>EASY</button>&nbsp;
-                  <button className="btn btn-warning" onClick={() => setShowRadar("hard")}>HARD</button>
+                  <div className="profile-card-header"><h4>{Radartext}</h4></div>
+                  <button className="btn btn-success" onClick={() => {setShowRadar("easy");setRadartext("Chart แสดงจำนวนครั้งที่ทำในแต่ละหมวดหมู่ในระดับ Easy")}}>EASY</button>&nbsp;
+                  <button className="btn btn-warning" onClick={() => {setShowRadar("hard");setRadartext("Chart แสดงจำนวนครั้งที่ทำในแต่ละหมวดหมู่ในระดับ Hard")}}>HARD</button>
                   <div className="profile-card-content">
                     <>{showRadar === "easy" ? <RadarChart></RadarChart> : <RadarChartHard></RadarChartHard>}</>
                   </div>

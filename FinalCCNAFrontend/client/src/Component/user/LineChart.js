@@ -53,17 +53,17 @@ const LineChart = () => {
             return DataName.ExamObjectid === select;
         }
     })
-    const [avgscore,setavgscore] = useState("-")
-   async function averagescore(){
+    const [avgscore, setavgscore] = useState("-")
+    async function averagescore() {
         let i = 0
         let score = 0
-        while(i < filterExamList.length){
-           score = score + filterExamList[i].Score
-           i++
+        while (i < filterExamList.length) {
+            score = score + filterExamList[i].Score
+            i++
         }
-        if(i = filterExamList.length){
+        if (i = filterExamList.length) {
             var sum = 0
-            sum = score/i
+            sum = score / i
             setavgscore(preve => Math.floor(sum))
         }
     }
@@ -128,9 +128,10 @@ const LineChart = () => {
                         )}
                     </Dropdown.Menu>
                 </Dropdown>
-                &nbsp;
-                <h5>Your easy average score is {avgscore}</h5>
             </div>
+            <>
+                &nbsp; &nbsp; <h5>Your  <span style={{ color: "green" }}>Easy</span> average score is {avgscore}</h5>
+            </>
             {DataName.length > 5 ?
                 <Line data={dataEasyL}></Line>
                 :

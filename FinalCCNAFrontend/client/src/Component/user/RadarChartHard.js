@@ -95,7 +95,7 @@ const RadarChartHard = () => {
 
     return (
         <div>
-            <button id="chartBtn" className="btn btn-primary" disabled={disBtn} onClick={() => [setScore(), setDisBtn(true)]}>Generate Chart</button>
+            <button id="chartBtn" className="btn btn-primary" disabled={disBtn} onClick={() => [setScore(), setDisBtn(true)]}>See chart</button>
             <Radar data={scoreData}></Radar>
         </div>
     )
