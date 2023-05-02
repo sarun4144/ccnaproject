@@ -122,8 +122,7 @@ function ManagAdmin() {
       <div className='admincontainer'>
         <div className="admin-menu-container">
           <div className="adminprofile">
-            <div className='row'>
-
+            <div className='row' style={{overflow:"auto"}}>
               <div className='col' >
                 <div className="admin-card-header"><h1>Admin Management Page</h1></div>
                 <Table className="table">

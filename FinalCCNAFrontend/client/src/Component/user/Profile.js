@@ -166,7 +166,7 @@ function Profile() {
             <div className="profile-card">
               <div className="profile-card-header"><h1>History</h1></div>
               <div className="row">
-                <div className="col-md-6" style={{ textAlign: "center" }}>
+                <div className="col-md-6" style={{ textAlign: "center" , overflow:"auto"}}>
                   <h2>Easy</h2>
                   <div className="profile-card-content">
                     <Table className="table">
@@ -199,7 +199,7 @@ function Profile() {
                     </Table>
                   </div>
                 </div>
-                <div className="col-md-6" style={{ textAlign: "center" }}>
+                <div className="col-md-6" style={{ textAlign: "center" , overflow:"auto"}}>
                   <h2>Hard</h2>
                   <div className="profile-card-content">
                     <Table className="table">

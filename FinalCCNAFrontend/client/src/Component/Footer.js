@@ -18,17 +18,17 @@ const Footer = () => {
             <div className='col'>
                 <h4>เว็บไซต์นี้เป็นส่วนหนึ่งของปริญญานิพนธ์</h4>
                 <ul className='footer-list'>
-                    <li></li>
-                    <li></li>
+                    <li>ภาควิชาเทคโดนโลยยีวิศวกรรมอิเล็กทรอนิกส์</li>
+                    <li>มหาวิทยาลัยเทคโนโลยีพระจอมเกล้าพระนครเหนือ</li>
                 </ul>
             </div>
         </div>
         <hr/>
-        <div className='row'>
+        {/* <div className='row'>
             <p className='footer-col-sm'>
                 &copy;{new Date().getFullYear()} | All right reserved to Cisco | Term Of Service | 100% Illegal
             </p>
-        </div>
+        </div> */}
         </div>
       </div>
     </div>

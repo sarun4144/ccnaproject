@@ -87,7 +87,7 @@ function Login() {
             <form onSubmit={handleSubmit}>
               <div className="form-group" >
                 <label>Email: </label>
-                <input className="form-control" type="email" name="email" autoFocus placeholder="Email" onChange={handleChange} />
+                <input className="form-control" type="email" name="email" autoFocus placeholder="Email" onChange={handleChange} required />
               </div>
               <br />
               <div className="form-group">

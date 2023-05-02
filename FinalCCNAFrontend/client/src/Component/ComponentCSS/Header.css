@@ -170,8 +170,11 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        height: 10vw;
+        height: 20vw;
         padding: 10px 0;
+        border : solid;
+        border-color: #9d9999;
+        border-width: 0.2px;
     }
 
     .header-con ul {

@@ -345,7 +345,7 @@ function ExamTestEasy() {
                       }
                       <br />
                       <center>{item.images.map((pic, Ipic) =>
-                        <img key={Ipic} src={pic.url} />
+                        <img key={Ipic} src={pic.url}  width="100%" height="auto" />
                       )}</center>
                       <br />
                       <span>{item.Question}</span>
@@ -472,7 +472,7 @@ function ExamTestEasy() {
                     </div>
                     <center>
                       {item.images.map((pic, Ipic) =>
-                        <img key={Ipic} src={pic.url} />
+                        <img key={Ipic} src={pic.url}  width="100%" height="auto" />
                       )}</center>
                     <br />
                     <span>{`${Selector}/${item.CorrectANS.length} is Selected `}</span>

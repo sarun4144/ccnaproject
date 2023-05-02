@@ -72,8 +72,29 @@
 @media screen and (max-width: 480px) {
     .content-con {
         flex-direction: column;
+        overflow: auto;
     }
-
+    .content-row {
+        display: flex;
+        flex-direction: row;
+        width: 500%;
+        justify-content: center;
+    }
+        
+    .content-card {
+        display: flex;
+        flex-direction: column;
+        margin-right: 5px;
+        padding: 15px;
+        text-align: left;
+        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+        overflow: hidden;
+        overflow-y: auto;
+        border-radius: 3px;
+        background-color: white;
+        width: auto;
+        min-width: 350px;
+    }
     .content-con:nth-child(2) .content-r {
         order: 1;
     }

@@ -20,7 +20,7 @@ function Register() {
         })
     }
 
-    const  handleSubmit = async (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault()
         console.log(value);
         if (value.password !== value.conpassword) {
@@ -32,25 +32,34 @@ function Register() {
                 iconColor: 'Red'
             })
         } else {
-            register(value).then((res) => {
-               var templateParams = {
-                    usarname: value.username,
-                    contact: res.data.id,
-                    email : value.email
-                };
-                emailjs.send(process.env.REACT_APP_SERVICE_ID, process.env.REACT_APP_TEMPLATE_ID, templateParams,process.env.REACT_APP_PUBLIC_KEY)
-                    .then(function (response) {
-                        Toast.fire({
-                            position: 'top-end',
-                            icon: 'success',
-                            title: res.data.msg
-                        })
-                        navigate("/login")
-                    }, function (error) {
-                        console.log('FAILED...', error);
-                    });
+            if (value.password.length < 6) {
+                Swal.fire({
+                    position: 'top',
+                    title: 'Password ต้องมี 6 ตัวอักษรขึ้นไป',
+                    text: 'กรุณากรอกรหัสใหม่',
+                    icon: 'error',
+                    iconColor: 'Red'
+                })
+            } else {
+                register(value).then((res) => {
+                    var templateParams = {
+                        usarname: value.username,
+                        contact: res.data.id,
+                        email: value.email
+                    };
+                    emailjs.send(process.env.REACT_APP_SERVICE_ID, process.env.REACT_APP_TEMPLATE_ID, templateParams, process.env.REACT_APP_PUBLIC_KEY)
+                        .then(function (response) {
+                            Toast.fire({
+                                position: 'top-end',
+                                icon: 'success',
+                                title: res.data.msg
+                            })
+                            navigate("/login")
+                        }, function (error) {
+                            console.log('FAILED...', error);
+                        });
 
-            }).catch((err) => {
+                }).catch((err) => {
                     console.log(err)
                     Swal.fire({
                         position: 'top',
@@ -62,9 +71,10 @@ function Register() {
                         confirmButtonText: 'ตกลง'
                     })
                 });
+            }
         }
     }
-    
+
     return (
         <div className="container">
             <div className="row" >
