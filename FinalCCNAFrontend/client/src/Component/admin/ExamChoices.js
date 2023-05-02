@@ -62,7 +62,7 @@ function ExamChoices() {
     setValue({})
     setValue2({})
     setValue3({})
-    setValue4({images: []})
+    setValue4({ images: [] })
     const Num = {
       Num: num
     }
@@ -184,59 +184,62 @@ function ExamChoices() {
     console.log("value", value)
 
     try {
-      if (CorrectANS.length <1) {
+      if (CorrectANS.length < 1) {
         Swal.fire({
           title: 'Answer is empty',
           text: 'Please select correct answer',
           icon: 'error'
         })
-      }else{
-      if (!value2.Answerdetail) {
-        payload.Answerdetail = Answerdetail
       } else {
-        payload.Answerdetail = value2.Answerdetail
-      }
-      if (Images.length > 0) {
-        payload.images = Images
-      }
-      if (value2.Question == null) {
-        payload.Question = Values.Question
-        console.log("payload", payload)
-      } else {
-        payload.Question = value2.Question
-        console.log("payload", payload)
-      }
-      let i = 0
-      while (i < Values.Choices.length) {
-        if (value[i] !== " " && value[i] !== undefined) {
-          value[i].isCorrect = Values.Choices[i].isCorrect
-          payload.Choices[i] = value[i]
-          console.log(value[i])
-        } else {
-          payload.Choices[i] = Values.Choices[i]
-          console.log("F")
+        if (CorrectANS == 1) {
+          payload.CorrectANS = []
+          if (!value2.Answerdetail) {
+            payload.Answerdetail = Answerdetail
+          } else {
+            payload.Answerdetail = value2.Answerdetail
+          }
+          if (Images.length > 0) {
+            payload.images = Images
+          }
+          if (value2.Question == null) {
+            payload.Question = Values.Question
+            console.log("payload", payload)
+          } else {
+            payload.Question = value2.Question
+            console.log("payload", payload)
+          }
+          let i = 0
+          while (i < Values.Choices.length) {
+            if (value[i] !== " " && value[i] !== undefined) {
+              value[i].isCorrect = Values.Choices[i].isCorrect
+              payload.Choices[i] = value[i]
+              console.log(value[i])
+            } else {
+              payload.Choices[i] = Values.Choices[i]
+              console.log("F")
+            }
+            i++
+          }
+          console.log(payload)
+          if (i = Values.Choices) {
+            examChoiceschange(EXid, payload)
+              .then(res => {
+                Toast.fire({
+                  position: 'top-end',
+                  icon: 'success',
+                  title: res.data
+                })
+                setValue({})
+                setValue2({})
+                setValue3({})
+                setValue4({ images: [] })
+                loadData(EXid)
+              }).catch(err => {
+                console.log(err);
+              })
+          }
         }
-        i++
       }
-      console.log(payload)
-      if (i = Values.Choices) {
-        examChoiceschange(EXid, payload)
-          .then(res => {
-            Toast.fire({
-              position: 'top-end',
-              icon: 'success',
-              title: res.data
-            })
-            setValue({})
-            setValue2({})
-            setValue3({})
-            setValue4({images: []})
-            loadData(EXid)
-          }).catch(err => {
-            console.log(err);
-          })
-      }
-    }
     } catch (err) {
 
     }
@@ -247,7 +250,11 @@ function ExamChoices() {
     let d = Choices2.length
     Choices2[d] = { text: " ", isCorrect: false }
     console.log(Choices2)
-    Edit(Questions2, Choices2, index2, images, Answerdetail, CorrectANS)
+    if (CorrectANS.length < 1) {
+      Edit(Questions2, Choices2, index2, images, Answerdetail, 1)
+    }else{
+      Edit(Questions2, Choices2, index2, images, Answerdetail, CorrectANS)
+    }
   }
 
   function selectDelete(Questions3, Choices3, index3, numI, Images, Answerdetail, CorrectANS) {
@@ -266,7 +273,11 @@ function ExamChoices() {
     } catch (err) {
 
     }
-    Edit(Questions3, Choice, index3, Images, Answerdetail, CorrectANS)
+    if (CorrectANS.length < 1) {
+      Edit(Questions3, Choice, index3, Images, Answerdetail, 1)
+    }else{
+      Edit(Questions3, Choice, index3, Images, Answerdetail, CorrectANS)
+    }
   }
 
   function EditH() {
@@ -493,10 +504,10 @@ function ExamChoices() {
                     <span> answer :  </span>
                     {item.CorrectANS.map((C, Cnum) =>
                       Cnum < item.CorrectANS.length - 1
-                      
+
                         ? <span key={Cnum}>{parseInt(C) + 1},</span>
                         : <span key={Cnum}>{parseInt(C) + 1}</span>
-                      
+
                     )}
                   </h5>
                 </div>
