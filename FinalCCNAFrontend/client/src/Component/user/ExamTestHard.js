@@ -515,7 +515,7 @@ function ExamTestEasy() {
                                             <div className="ExamThardrole_name">
                                                 <h1>{exame.name} &nbsp;
                                                     Hard</h1>
-                                                Time = {min}:{counter}
+                                                Time = {min}:{counter} min
                                             </div>
                                             <br />
                                             {Data2.map((item, index) => (

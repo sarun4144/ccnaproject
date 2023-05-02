@@ -126,7 +126,7 @@ function Profile() {
           <>
             <div className="profile-card">
               <div className="profile-card-header">
-                <h1>User - Profile</h1>
+                <h1>Profile</h1>
               </div>
               <div className="profile-card-content">
                 {loading2 == true
@@ -144,7 +144,7 @@ function Profile() {
             <div className="row">
               <div className="col-md-6">
                 <div className="profile-card">
-                  <div className="profile-card-header"><h1>Statistics - Line Chart</h1></div>
+                  <div className="profile-card-header"><h2>Chart แสดงคะแนนเฉลี่ย</h2></div>
                   <button className="btn btn-success" onClick={() => setShowLine("easy")}>EASY</button>&nbsp;
                   <button className="btn btn-warning" onClick={() => setShowLine("hard")}>HARD</button>
                   <div className="profile-card-content">
@@ -154,7 +154,7 @@ function Profile() {
               </div>
               <div className="col-md-6">
                 <div className="profile-card">
-                  <div className="profile-card-header"><h1>Statistics - Radar Chart</h1></div>
+                  <div className="profile-card-header"><h3>Chart แสดงจำนวนครั้งที่ทำข้อสอบในแต่ละหมวดหมู่</h3></div>
                   <button className="btn btn-success" onClick={() => setShowRadar("easy")}>EASY</button>&nbsp;
                   <button className="btn btn-warning" onClick={() => setShowRadar("hard")}>HARD</button>
                   <div className="profile-card-content">
@@ -164,7 +164,7 @@ function Profile() {
               </div>
             </div>
             <div className="profile-card">
-              <div className="profile-card-header"><h1>History</h1></div>
+              <div className="profile-card-header"><h1>ประวัติการทำข้อสอบ</h1></div>
               <div className="row">
                 <div className="col-md-6" style={{ textAlign: "center" , overflow:"auto"}}>
                   <h2>Easy</h2>
