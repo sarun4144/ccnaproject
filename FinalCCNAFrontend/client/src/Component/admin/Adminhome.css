@@ -54,10 +54,32 @@
   margin-bottom: 25px;
   background-color: white;
   padding: 15px;
-width: 250px;
+  width: 100%;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   overflow: hidden;
   overflow-y: auto;
+}
+@media screen and (max-width: 500px) {
+  .admin-card-header {
+    background-color: #333;
+    color: white;
+    font-size: 20px;
+  }
+  .admin-cat-manage {
+    width: 200px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    overflow: hidden;
+    overflow-y: auto;
+  }
+  .admincontainer {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    margin-left: 90px;
+    margin-right: 90px;
+    margin-top: 80px;
+  }
+  
 }
 @media (max-width: 1280px) {
   .admincontainer {
