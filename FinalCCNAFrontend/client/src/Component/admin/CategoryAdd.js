@@ -98,7 +98,7 @@ function CategoryAdd() {
       <AdminToolbar />
       <div className='admincontainer' >
         <div className="admin-cat-manage">
-          <div className="admin-card-header"><h1>Category Management Page</h1></div>
+          <div className="admin-card-header">Category Management Page</div>
           <form onSubmit={handleSubmit}>
             <div className="form-group">
               <label form="exampleFormControlInput1">Category Name</label>
@@ -113,7 +113,7 @@ function CategoryAdd() {
           <br />
           <hr />
           <br />
-          <div className="admin-card-header"><h1> Category List </h1></div>
+          <div className="admin-card-header">Category List</div>
           <br />
           <ul className="list-group">
             {category.map((item, index) =>
