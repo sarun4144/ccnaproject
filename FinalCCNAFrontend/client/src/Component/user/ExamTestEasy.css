@@ -152,7 +152,6 @@
 
 .result-card {
     align-items: center;
-    display: flex;
     background-color: white;
     justify-content: center;
     flex-wrap: wrap;
@@ -167,13 +166,7 @@
     overflow-y: auto;
     white-space: pre-wrap;
 }
- .result-fix{
-  width: 80%;
-  height: 100%;  
-  /* background-color: #4CAF50; */
-  display: block;
-  justify-content: center;
- }
+
 .result-Question {
     justify-content: center;
     border-radius: 10px;
@@ -182,8 +175,6 @@
     margin-bottom: 10px;
     margin-left: 50px;
     margin-right: 50px;
-    align-items: center;
-
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     overflow: hidden;
     overflow-y: auto;
@@ -215,13 +206,6 @@
         padding: 15px;
 
     }
-    .result-fix{
-        width: 100%;
-        height: 100%;  
-        /* background-color: #4CAF50; */
-        display: block;
-        justify-content: center;
-       }
 
     .ExamTeasycard_item {
         padding: 5px;
@@ -249,13 +233,6 @@
         padding: 5px;
     }
 
-    .result-fix{
-        width: 100%;
-        height: 100%;  
-        /* background-color: #4CAF50; */
-        display: block;
-        justify-content: center;
-    }
     .ExamTeasycard_item {
         width: 100%;
     }
