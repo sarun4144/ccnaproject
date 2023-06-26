@@ -236,7 +236,7 @@ function ExamTestEasy() {
             .then(res => {
                 Confirm.fire({
                     title: 'บันทึกข้อสอบแล้ว!!',
-                    text: "กลับไปหน้าเริ่มทำข้อสอบหรือไม่",
+                    text: "กลับไปหน้าโปรไฟล์หรือไม่",
                     icon: 'sucess',
                 }).then((result) => {
                     if (result.isConfirmed) {
@@ -250,7 +250,7 @@ function ExamTestEasy() {
                         localStorage.setItem("result", 0)
                         setANSiscorrect(false)
                         setAnswerdetail(false)
-                        navigate("/user/extest")
+                        navigate("/user/profile")
                     } else {
                         setScore(preve => 0);
                         localStorage.setItem("score", 0)
@@ -385,7 +385,7 @@ function ExamTestEasy() {
                                     <br />
                                     <span className="ExamThardtext"> ใช้เวลาไปทั้งหมด = {min2} นาที {counter2} วินาที </span>
                                     <br />
-                                    <div>
+                                    <div className="result-fix">
                                         {RecordArray.map((item, index) =>
                                             <div key={index} className="result-Question">
                                                 <div className="ExamThardQuestion">

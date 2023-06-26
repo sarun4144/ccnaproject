@@ -117,9 +117,9 @@ function CategoryAdd() {
           <br />
           <ul className="list-group">
             {category.map((item, index) =>
-              <li key={index} className="list-group-item d-flex justify-content-between align-items-center" style={{overflow:"auto"}}>
+              <li key={index} className="list-group-item d-flex justify-content-between align-items-center" style={{overflow:"auto",}}>
                 {item.name}
-                <button type="button" className="btn btn-danger" onClick={() => handleRemove(item._id)}>
+                <button type="button" className="btn btn-danger" onClick={() => handleRemove(item._id)} >
                   <span className="badge badge-light">X</span>
                 </button>
               </li>

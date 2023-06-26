@@ -79,6 +79,23 @@
     margin-right: 90px;
     margin-top: 80px;
   }
+  .admin-cat-manage {
+  border-radius: 10px;
+  margin-top: 25px;
+  margin-bottom: 25px;
+  background-color: white;
+  padding: 15px;
+  width: 130%;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  overflow: hidden;
+  overflow-y: auto;
+}
+ul {
+  font-size: 10px;
+}
+.btn {
+  font-size: 10px;
+}
   
 }
 @media (max-width: 1280px) {

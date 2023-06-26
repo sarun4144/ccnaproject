@@ -115,7 +115,7 @@ const LineChartHard = () => {
                 &nbsp;
             </div>
             <>
-            &nbsp; &nbsp; <h5>Your  <span style={{ color: "red" }}>Easy</span> average score is {avgscore}</h5>
+            &nbsp; &nbsp; <h5>Your  <span style={{ color: "red" }}>Hard</span> average score is {avgscore}</h5>
             </>
         <div>
             {DataName.length > 5 ?
