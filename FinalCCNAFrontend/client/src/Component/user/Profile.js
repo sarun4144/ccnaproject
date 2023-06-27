@@ -10,13 +10,12 @@ import RadarChartHard from "./RadarChartHard";
 import Table from 'react-bootstrap/Table';
 import { ChangeName, reads, Hardlog, Easylog } from "../../Function/Person"
 import { useNavigate } from "react-router-dom";
-
-function Profile() {
+ function Profile() {
   const user = useSelector((state) => ({ ...state }))
-  const Userid = localStorage.ObjectID
-  const Token = user.userStore.user.token
-  const email = user.userStore.user.email
-  const role = user.userStore.user.role
+  const Userid =   localStorage.ObjectID
+  const Token =   user.userStore.user.token
+  const email =   user.userStore.user.email
+  const role =  user.userStore.user.role
   const username = user.userStore.user.username
   const [data, setData] = useState([]);
   const [dataExamHard, setDataExamHard] = useState([]);
@@ -46,8 +45,11 @@ function Profile() {
   useEffect(() => {
     localStorage.removeItem("Index")
   }, [])
+  
+   
   useEffect(() => {
-    if (Userid !== null) {
+    
+    if (Userid !== null || email !== null) {
       loadData(Token, Userid)
     }
   }, [Userid])
@@ -55,7 +57,7 @@ function Profile() {
 
   useEffect(() => {
     //code
-    if (Userid !== null) {
+    if (Userid !== null || email !== null) {
       loadExamData(Userid)
       loadExamDataE(Userid)
     }

@@ -113,6 +113,7 @@ function App() {
 
 
               <Route path="/user/profile" element={<UserRoute><><Profile /></> </UserRoute>} />
+              {/* <Route path="/user/profile" element={<><Profile /></> } /> */}
               <Route path="/user/ResultHard" element={<UserRoute><><ResultHard /></> </UserRoute>} />
               <Route path="/user/ResultEasy" element={<UserRoute><><ResultEasy /></> </UserRoute>} />
 
