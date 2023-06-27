@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
+import * as moment from 'moment';
 import './Profile.css'
 import * as AiIcons from "react-icons/ai";
 import Swal from 'sweetalert2'
@@ -229,7 +230,9 @@ import { useNavigate } from "react-router-dom";
                             <td>{item.Title}</td>
                             <td>{item.Category}</td>
                             <td>{item.Time}</td>
-                            <td>{item.Date.substring(0, 24)}</td>
+                            <td> {moment(item.Date)
+                            .locale("th").format('LLL')
+                            }</td>
                             <td>{item.Score}</td>
                           </tr>
                         )}
