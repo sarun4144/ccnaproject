@@ -151,10 +151,10 @@ function ResultHard() {
                                 </div>
                                 {
                                     true
-                                        ? (<div>
-                                            {item.Answerdetail}
+                                        ? (<div className="result-detail">
+                                        {item.Answerdetail}
 
-                                        </div>)
+                                    </div>)
 
                                         : (<div>
 
