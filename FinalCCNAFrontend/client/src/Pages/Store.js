@@ -10,6 +10,7 @@ import Dropdown from 'react-bootstrap/Dropdown';
 import Swal from 'sweetalert2'
 import Confirm from "../Alert/Confirm"
 import Switch from '@mui/material/Switch';
+import * as moment from 'moment';
 
 //Notify
 
@@ -196,7 +197,9 @@ function Store() {
                     <h5>Category : {cat.name}</h5>
                   </div>
                   <div className="form-group">
-                    <h5>Creat at : {item.date}</h5>
+                    <h5>Creat at : {moment(item.date)
+                            .locale("th").format('LLL')
+                            }</h5>
                   </div>
                   <button type="submit" className="btn btn-warning" onClick={(id) => EditBTN(item._id, item.Categoryid, cat.name)}>Edit</button> &nbsp;
                   <button type="submit" className="btn btn-danger" onClick={(id) => DeleteBTN(item._id)}>Delete</button>&nbsp;

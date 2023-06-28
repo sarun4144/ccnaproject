@@ -6,6 +6,7 @@ import { reads } from "../Function/Person"
 import Button from "react-bootstrap/esm/Button";
 import { useNavigate } from "react-router-dom";
 import { checkin } from "../Store/examSilce";
+import * as moment from 'moment';
 
 
 function Content() {
@@ -137,7 +138,9 @@ function Content() {
                                                 <p>
                                                     {itemN.title}
                                                 </p>
-                                                {itemN.date.substring(0, 10)}
+                                                {moment(itemN.date)
+                            .locale("th").format('LLL')
+                            }
                                             </div>
                                             <hr />
                                             <div>{itemN.CAT.map((cat, index) =>
