@@ -488,10 +488,10 @@ function ExamTestEasy() {
                                                     </div>
                                                     {
                                                         true
-                                                            ? (<div>
-                                                                {item.Answerdetail}
-
-                                                            </div>)
+                                                            ? (<div className="result-detail">
+                                                            {item.Answerdetail}
+                                
+                                                          </div>)
 
                                                             : (<div>
 
