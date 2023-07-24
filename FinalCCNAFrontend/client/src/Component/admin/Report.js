@@ -5,12 +5,14 @@ import { Repotlist } from "../../Function/Reportlog";
 import Dropdown from "react-bootstrap/Dropdown";
 import AdminToolbar from "./AdminToolbar";
 import "./Adminhome.css";
+import * as moment from "moment";
 
 function Report() {
   const [Data, setData] = useState([]);
   const [Datalog, setDatalog] = useState([]);
   const user = useSelector((state) => ({ ...state }));
   const Log = Object.values(Datalog);
+  console.log(Data);
 
   useEffect(() => {
     //code
@@ -34,7 +36,6 @@ function Report() {
       return exam.ExamId === select;
     }
   });
-
 
   return (
     <div className="adminwrap">
@@ -60,7 +61,15 @@ function Report() {
                   {item.ExName}
                 </Dropdown.Item>
               ))}
-              <Dropdown.Item as="button" onClick={(id) => { setSelect(""); setDropDownText("ALL") }}>ALL</Dropdown.Item>
+              <Dropdown.Item
+                as="button"
+                onClick={(id) => {
+                  setSelect("");
+                  setDropDownText("ALL");
+                }}
+              >
+                ALL
+              </Dropdown.Item>
             </Dropdown.Menu>
           </Dropdown>
           <div className="Report-item">
@@ -71,26 +80,27 @@ function Report() {
                   <th scope="col">Name</th>
                   <th scope="col">Username</th>
                   <th scope="col">Text</th>
+                  <th scope="col">Date</th>
                 </tr>
               </thead>
 
-              <tbody >
-
+              <tbody>
                 {filterExamList.map((item, idex) => (
                   <>
-                    {item.Log.map((item2, idex2) =>
-                      <tr className="Report-table ">
+                    {item.Log.sort(
+                      (a, b) => new Date(b.Date) - new Date(a.Date)
+                    ).map((item2, index2) => (
+                      <tr className="Report-table" key={index2}>
                         <td>{item2.Number}</td>
                         <td>{item2.Name}</td>
                         <td>{item2.Username}</td>
                         <td>{item2.Text}</td>
+                        <td>{moment(item2.Date).locale("th").format("LLL")}</td>
                       </tr>
-                    )}
+                    ))}
                   </>
                 ))}
-
               </tbody>
-
             </table>
           </div>
         </div>

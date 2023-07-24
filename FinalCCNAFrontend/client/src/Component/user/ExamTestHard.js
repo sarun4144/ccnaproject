@@ -350,6 +350,7 @@ function ExamTestEasy() {
                 Name: name,
                 Username: Username,
                 Text: text,
+                Date: Date.now()
             }
             Bog.push(Reload)
             Rerecord(Exid, Bog)

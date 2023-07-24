@@ -8,7 +8,7 @@ const Footer = () => {
         <div className='container-footer'>
         <div className='row'>
             <div className='col'>
-                <h4>Develope By</h4>
+                <h4>Developed By</h4>
                 <ul className='footer-list'>
                     <li>นาย สรัญ พ่วงกระแสร์</li>
                     <li>นาย ฌัชพล ไผ่กอ</li>

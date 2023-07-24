@@ -521,10 +521,12 @@ function ExamChoices() {
                           <td> <textarea name={numI} className="form-control" rows="1" defaultValue={num.text} onChange={handleChangeC} ></textarea></td>
 
                           <td>
-                            <input name={numI} className="form-check-input" type="checkbox" value={numI} onChange={handleCheck} />
-                            &nbsp;&nbsp;&nbsp;&nbsp;
-                            <button type="button" className="btn btn-danger" onClick={(Questions2) => selectDelete(item.Question, item.Choices, index + 1, numI, item.images, item.Answerdetail, item.CorrectANS)}> <AiFillDelete /> </button>
 
+                            <button type="button" className="btn btn-danger" onClick={(Questions2) => selectDelete(item.Question, item.Choices, index + 1, numI, item.images, item.Answerdetail, item.CorrectANS)}> <AiFillDelete /> </button>
+                            &nbsp;&nbsp;&nbsp;&nbsp;
+                            <input name={numI} className="form-check-input" type="checkbox" value={numI} onChange={handleCheck}  />
+                            &nbsp;&nbsp;&nbsp;&nbsp;
+                            <span>Check box for correct Choice</span>
                           </td>
                           <td>
                             {
