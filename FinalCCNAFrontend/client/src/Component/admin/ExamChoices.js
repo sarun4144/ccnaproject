@@ -182,6 +182,7 @@ function ExamChoices() {
     console.log("valueC", Values.Choices)
     console.log("payload", payload.Choices)
     console.log("value", value)
+    console.log("playload", payload)
 
     try {
       if (CorrectANS.length < 1) {
@@ -191,8 +192,8 @@ function ExamChoices() {
           icon: 'error'
         })
       } else {
-        if (CorrectANS == 1) {
-          payload.CorrectANS = []
+        // if (CorrectANS.length == 1) {
+          // payload.CorrectANS = []
           if (!value2.Answerdetail) {
             payload.Answerdetail = Answerdetail
           } else {
@@ -238,7 +239,9 @@ function ExamChoices() {
                 console.log(err);
               })
           }
-        }
+        // }else{
+        //   console.log("NOs")
+        // }
       }
     } catch (err) {
 
