@@ -352,8 +352,8 @@ function ExamTestEasy() {
                 Text: text,
                 Date: Date.now()
             }
-            Bog.push(Reload)
-            Rerecord(Exid, Bog)
+            // Bog.push(Reload)
+            Rerecord(Exid, Reload)
                 .then(res => {
                     Swal.fire({
                         title: 'รายงานปัญหาสำเร็จ',

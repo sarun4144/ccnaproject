@@ -7,7 +7,9 @@ exports.Reportadd = async (req, res) => {
     const id  = req.params.id;
     const {Name} = req.body;
     try {
+            // const Data= await db.collection('Report').findOne({ExamId:ObjectId(id)})
             await db.collection('Report').insertOne({ExamId:ObjectId(id),ExName:Name,date: new Date(),Log:[]})
+            // console.log("NAME",Name)
             res.status(200).send("Complete")
     } catch {
   
@@ -20,7 +22,7 @@ exports.Rerecordlist= async (req, res) => {
     try {
            const Data= await db.collection('Report').findOne({ExamId:ObjectId(id)})
             // await db.collection('Report').updateOne({ExamId:ObjectId(id),ExName:Name,date: new Date()})
-        console.log(Data.Log)
+        // console.log(Data.Log)
     res.status(200).send(Data.Log)
     } catch {
   
@@ -32,7 +34,7 @@ exports.Reportlist= async (req, res) => {
     try {
            const Data= await db.collection('Report').find().toArray()
             // await db.collection('Report').updateOne({ExamId:ObjectId(id),ExName:Name,date: new Date()})
-        console.log(Data)
+        // console.log(Data)
     res.status(200).send(Data)
     } catch {
   
@@ -45,9 +47,11 @@ exports.Rerecord = async (req, res) => {
     const LOGs = req.body;
 
     try {
+          const Data= await db.collection('Report').findOne({ExamId:ObjectId(id)})
 
-        await db.collection('Report').updateOne({ExamId:ObjectId(id)},{$set:{Log:LOGs}})
-
+         await Data.Log.push(LOGs)
+         await db.collection('Report').updateOne({ExamId:ObjectId(id)},{$set:{Log:Data.Log}})
+        // console.log("DATAAADADA",Data.Log)
     res.status(200).send("Complete")
     } catch {
   
