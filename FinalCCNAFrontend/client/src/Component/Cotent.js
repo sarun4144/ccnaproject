@@ -119,7 +119,7 @@ function Content() {
                 </div>
                 <br></br>
                 <div className="content-con">
-                    <div className="content-con-header"><h1>The Newest Exam</h1></div>
+                    <div className="content-con-header"><h1>Newly Added Exam</h1></div>
                     <div className="content-row">
                         {loadingdate == true
                             ? (<h1>Loading ...</h1>)

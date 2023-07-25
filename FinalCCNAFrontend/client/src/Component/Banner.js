@@ -9,7 +9,7 @@ import bannerBG from './bannerbg.jpg';
 let bannerData = {
     title: "Welcome to Pre-CCNA Exam Website",
     desc0: "Please Register or Login to access Exam List",
-    desc1: "Please Enjoy practicing with our website"
+    desc1: "Enjoy practicing with our website."
 }
 
 

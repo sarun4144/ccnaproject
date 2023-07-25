@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from "react";
 import { categoryAdd, listCategory, removeCategory } from "../../Function/Category";
 import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 //Notify
 import Swal from 'sweetalert2'
 import Confirm from "../../Alert/Confirm";
@@ -11,9 +12,10 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import AdminToolbar from "./AdminToolbar";
 import './Adminhome.css'
 
+
 function CategoryAdd() {
   const user = useSelector((state) => ({ ...state }))
-
+  const navigate = useNavigate()
   const [category, setData] = useState([]);
   const Token = user.userStore.user.token
   console.log("Data", category);
@@ -50,6 +52,7 @@ function CategoryAdd() {
         title: 'เพิ่มหมวดหมู่สำเร็จ'
       })
       loadData(Token)
+      navigate("/store");
     })
       .catch((err) => {
         Swal.fire({

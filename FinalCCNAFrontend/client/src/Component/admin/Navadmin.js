@@ -6,7 +6,7 @@ import './Navadmin.css';
 const Navbaradmin = () => {
   return (
     <div className="navadmin-column">
-      <div className="navadmin-header"><h2>Admin Tool</h2></div>
+      <div className="navadmin-header"><h2>Admin Tools</h2></div>
       <ul >
 
         <li className="navadmin-item">
@@ -23,7 +23,11 @@ const Navbaradmin = () => {
         </li>
         <li className="navadmin-item">
           {/* <a href=""></a> */}
-          <Link to="/admin/categoryadd"> Edit Category</Link>
+          <Link to="/store"> Exam list</Link>
+        </li>
+        <li className="navadmin-item">
+          {/* <a href=""></a> */}
+          <Link to="/admin/categoryadd"> Category management</Link>
         </li>
         <li className="navadmin-item">
           {/* <a href=""></a> */}

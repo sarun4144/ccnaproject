@@ -103,15 +103,15 @@ exports.verifycation = async (req, res) => {
   try {
     const user = await User.findOne({ _id: req.params.id })
     if (user.enabled == true && user != null) {
-      res.status(200).json('You already verify your email Please login')
+      res.status(200).json('You already verified your email. Please login')
     } else {
       if (user == null) {
         res.status(402).send("Your Email is not register")
       } else {
         await User.findOneAndUpdate({ _id: req.params.id },
           { enabled: true })
-        console.log("adasd", user)
-        res.status(200).send('Verifycation complete please login')
+        // console.log("adasd", user)
+        res.status(200).send('Verifycation completed. Please login')
       }
     }
   } catch (err) {

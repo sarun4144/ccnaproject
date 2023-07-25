@@ -17,6 +17,11 @@ export const ToolbarData = [
         cName: 'tool-text'
     },
     {
+        title: 'หน้าชุดข้อสอบ',
+        path: '/store',
+        cName: 'tool-text'
+    },
+    {
         title: 'เพิ่มหมวดหมู่',
         path: '/admin/categoryadd',
         cName: 'tool-text'
