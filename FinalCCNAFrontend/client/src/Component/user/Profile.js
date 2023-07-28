@@ -25,8 +25,8 @@ import { useNavigate } from "react-router-dom";
   const [Linetext, setLinetext] = useState("เลือกความยากและชุดข้อสอบเพื่อแสดงกราฟ");
   const [Radartext, setRadartext] = useState("เลือกความยากเพื่อแสดงกราฟ");
 
-  const [showLine, setShowLine] = useState("easy");
-  const [showRadar, setShowRadar] = useState("easy")
+  const [showLine, setShowLine] = useState("");
+  const [showRadar, setShowRadar] = useState("")
 
   const [show, setShow] = useState(false);
 
@@ -154,7 +154,13 @@ import { useNavigate } from "react-router-dom";
                   <button className="btn btn-success" onClick={() => {setShowLine("easy");setLinetext("Chart แสดงคะแนนเฉลี่ยระดับ Easy")}}>EASY</button>&nbsp;
                   <button className="btn btn-warning" onClick={() => {setShowLine("hard");setLinetext("Chart แสดงคะแนนเฉลี่ยระดับ Hard")}}>HARD</button>
                   <div className="profile-card-content">
-                    <>{showLine === "easy" ? <LineChart></LineChart> : <LineChartHard></LineChartHard>}</>
+                    <>
+                    {showLine != "" 
+                     ?<>{showLine === "easy" ? <LineChart></LineChart> : <LineChartHard></LineChartHard>}</>
+                     :<></>
+                    }
+                   
+                    </>
                   </div>
                 </div>
               </div>
@@ -164,7 +170,12 @@ import { useNavigate } from "react-router-dom";
                   <button className="btn btn-success" onClick={() => {setShowRadar("easy");setRadartext("Chart แสดงจำนวนครั้งที่ทำในแต่ละหมวดหมู่ในระดับ Easy")}}>EASY</button>&nbsp;
                   <button className="btn btn-warning" onClick={() => {setShowRadar("hard");setRadartext("Chart แสดงจำนวนครั้งที่ทำในแต่ละหมวดหมู่ในระดับ Hard")}}>HARD</button>
                   <div className="profile-card-content">
-                    <>{showRadar === "easy" ? <RadarChart></RadarChart> : <RadarChartHard></RadarChartHard>}</>
+                  <>
+                    {showRadar != "" 
+                     ?<>{showRadar === "easy" ? <RadarChart></RadarChart> : <RadarChartHard></RadarChartHard>}</>
+                     :<></>
+                    }
+                    </>
                   </div>
                 </div>
               </div>

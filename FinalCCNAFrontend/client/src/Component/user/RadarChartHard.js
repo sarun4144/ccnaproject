@@ -17,14 +17,17 @@ const RadarChartHard = () => {
     const [track, setTrack] = useState(false);
     const [disBtn, setDisBtn] = useState(false);
 
-    const Categorydata = []
-
-    const [cat1Score, setCat1Score] = useState(0);
-    const [cat2Score, setCat2Score] = useState(0);
-    const [cat3Score, setCat3Score] = useState(0);
-    const [cat4Score, setCat4Score] = useState(0);
-    const [cat5Score, setCat5Score] = useState(0);
-    const [cat6Score, setCat6Score] = useState(0);
+    // Using an object to manage dynamic state
+    const [dynamicStates, setDynamicStates] = useState({});
+    const [Stagess, setStagess] = useState(0);
+    // const Categorydata = []
+    // const [catScore, setcatScore] = useState(0);
+    // const [cat1Score, setCat1Score] = useState(0);
+    // const [cat2Score, setCat2Score] = useState(0);
+    // const [cat3Score, setCat3Score] = useState(0);
+    // const [cat4Score, setCat4Score] = useState(0);
+    // const [cat5Score, setCat5Score] = useState(0);
+    // const [cat6Score, setCat6Score] = useState(0);
 
     useEffect(() => {
         loadExamData(Userid)
@@ -35,6 +38,18 @@ const RadarChartHard = () => {
         setTrack(false)
     }, [track])
 
+    useEffect(() => {
+        if(Stagess == 1){
+            setStage()
+            console.log("DDD")
+        }
+    }, [Stagess])
+
+    useEffect(() => {
+        console.log(dynamicStates)
+    }, [dynamicStates])
+  
+
     function loadExamData(id) {
         Hardlog(id).then((res) => {
             setDataExamHard(res.data);
@@ -42,47 +57,55 @@ const RadarChartHard = () => {
         listCategory(id).then(res => {
             /*console.log(res.data)*/
             setCat(res.data)
+            setStagess(1)
         }).catch(err => {
             console.log(err.response.data)
         })
     }
 
     const DataName = Object.values(dataExamHard);
-    console.log(DataName)
-    function setScore() {
-        /*setDataArray(category.map((data) => data.name));*/
+    // console.log(DataName)
+   async function setStage(){
+        category.map((data2) => {
+            handleAddState(data2.name)
+        })
+    }
+
+    async function setScore() {
         DataName.map((data) => {
-            if (data.Category === "Network Fundimental") { setCat6Score(preve => preve + 1) }
-            if (data.Category === "Network Access") { setCat1Score(preve => preve + 1) }
-            if (data.Category === "IP Connectivity") { setCat2Score(preve => preve + 1) }
-            if (data.Category === "IP Services") { setCat5Score(preve => preve + 1) }
-            if (data.Category === "Security Fundamentals") { setCat3Score(preve => preve + 1) }
-            if (data.Category === "Automaton and Programmability") { setCat4Score(preve => preve + 1) }
-        }
+            category.map((data2) => {
+                if(data.Category == data2.name){
+                    setDynamicStates((prevStates) => ({
+                        ...prevStates,
+                        [data2.name]: prevStates[data2.name] + 1,
+                      }));
+                      
+                }
+            })
+            }
         )
         setTrack(true);
     }
 
-    // const [scoreData, setScoreData] = useState({
-    //     labels: FakeData.map((data) => data.Category),
-    //     datasets: [
-    //         {
-    //             label: "Score",
-    //             data: FakeData.map((data) => data.Score),
-    //             backgroundColor: [
-    //                 "rgba(75,192,192,0.45)"
-    //             ],
-    //             borderColor: "skyblue",
-    //             borderWidth: 2,
-    //         }
-    //     ],
-    // })
+    const handleAddState = (stateName) => {
+        setDynamicStates((prevStates) => ({
+          ...prevStates,
+          [stateName]: 0  , // Set an initial value for the new state
+        }));
+      };
+
+    const handleUpdateState = (stateName) => {
+        setDynamicStates((prevStates) => ({
+          ...prevStates,
+          [stateName]: prevStates[stateName] + 1,
+        }));
+      };
 
     const scoreData = {
         labels: category.map((data) => data.name),
         datasets: [{
             label: 'Score',
-            data: [cat1Score, cat2Score, cat3Score, cat4Score, cat5Score, cat6Score],
+            data: Object.values(dynamicStates),
             fill: true,
             backgroundColor: 'rgba(255, 99, 132, 0.2)',
             borderColor: 'rgb(255, 99, 132)',
@@ -93,11 +116,25 @@ const RadarChartHard = () => {
         },]
     };
 
-    return (
+    return (<>
         <div>
-            <button id="chartBtn" className="btn btn-primary" disabled={disBtn} onClick={() => [setScore(), setDisBtn(true)]}>See chart</button>
+            <button id="chartBtn" className="btn btn-primary" disabled={disBtn} onClick={() => [setScore(), setDisBtn(true), ]}>See chart</button>
             <Radar data={scoreData}></Radar>
         </div>
+        
+         <div>
+      {/* <button onClick={() => handleAddState('count1')}>Add State 1</button>
+      <button onClick={() => handleAddState('count2')}>Add State 2</button> */}
+{/* 
+      {Object.entries(dynamicStates).map(([stateName, stateValue]) => (
+        <div key={stateName}>
+          <p>{stateName}: {stateValue}</p>
+          <button onClick={() => handleUpdateState(stateName)}>Increment</button>
+        </div>
+      ))} */}
+    </div>
+        </>
+        
     )
 }
 

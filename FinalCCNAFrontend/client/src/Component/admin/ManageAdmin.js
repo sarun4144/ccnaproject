@@ -68,13 +68,13 @@ function ManagAdmin() {
       icon: 'warning',
     }).then((result) => {
       if (result.isConfirmed) {
-        Swal.fire({
-          title: 'ลบ User สำเร็จ!',
-          text: 'User ได้ถูกลบแล้ว',
-          icon: 'success'
-        })
         console.log(user.userStore.user.token, id)
         removeUser(user.userStore.user.token, id).then((res) => {
+          Swal.fire({
+            title: 'ลบ User สำเร็จ!',
+            text: 'User ได้ถูกลบแล้ว',
+            icon: 'success'
+          })
           console.log("Delete", res);
           loadData(user.userStore.user.token);
         }).catch((err) => {

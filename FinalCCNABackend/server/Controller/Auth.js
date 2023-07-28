@@ -36,7 +36,7 @@ exports.register = async (req, res) => {
     //   res.status(500).send("EMAIL SENDER SERVER ERROR !!! " + serial)
     // }
     res.status(200).json({
-      msg :"สมัครสมาชิกสำเร็จตรวจสอบ email เพื่อยืนยันตัวตน (อาจจะถูกส่งมาใน junk mail)",
+      msg :"สมัครสมาชิกสำเร็จตรวจสอบ e-mail เพื่อยืนยันตัวตน (อาจจะถูกส่งมาใน junk mail)",
       id : Regisuser._id
    });
   } catch (err) {
@@ -75,7 +75,7 @@ exports.login = async (req, res) => {
           res.status(200).json({ token, payload });
         });
       } else {
-        return (res.status(400).send("คุณยังไม่ได้ยืนยัน e-mail กรุณาตรวจสอบ e-mail เพื่อยืนยัน"))
+        return (res.status(400).send("คุณยังไม่ได้ยืนยัน e-mail กรุณาตรวจสอบ e-mail เพื่อยืนยันตัวตน"))
       }
 
     } else {

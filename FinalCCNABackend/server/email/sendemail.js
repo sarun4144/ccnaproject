@@ -10,7 +10,7 @@ async function sendemail(Email,username,contact) {
     await transporter.sendMail({
         from: 'CCNA_email_verify <ccna.email.sender@gmail.com>',
         to: Email,
-        subject: "Please verify your account",
+        subject: "CCNA Verification. Please verify your account",
         html: `
               <div>You have a contact form submission ${username} !!</div>
               <br/>

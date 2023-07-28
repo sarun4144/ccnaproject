@@ -27,7 +27,21 @@ const UserSchema = new mongoose.Schema({
     },
     Log:{
         type: Object,
-        default: {}
+        default: {
+            Easy:{
+                type: Object,
+                default:{
+
+                }
+            },
+            Hard:{
+                type: Object,
+                default:{
+                    
+                }
+
+            }
+        }
     }
 }, { timestamps: true });
 
