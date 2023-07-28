@@ -503,7 +503,7 @@ function ExamChoices() {
                 </div>
                 <div>
                   <br />
-                  <h5>Correct Answer :
+                  <h5>Correct Answer is
                     <span> answer :  </span>
                     {item.CorrectANS.map((C, Cnum) =>
                       Cnum < item.CorrectANS.length - 1
