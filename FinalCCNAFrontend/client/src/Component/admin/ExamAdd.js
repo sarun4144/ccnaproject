@@ -45,18 +45,16 @@ function ExamAdd() {
       value.Categoryid = Data[0]._id
     }
     examadd(store.userStore.user.token,value).then((res) => {
-      Toast.fire({
-        position: 'top-end',
-        icon: 'success',
-        title: 'เพิ่มข้อสอบสำเร็จ'
-      })
       const Reportload ={
         Name : res.data.Name
       }
       Reportadd(res.data.Id,Reportload).then((res) => {
-        
-        
-      //  navigate("/store")
+        Toast.fire({
+          position: 'top-end',
+          icon: 'success',
+          title: 'เพิ่มข้อสอบสำเร็จ'
+        })
+       navigate("/store")
       })
     })
       .catch((err) => {

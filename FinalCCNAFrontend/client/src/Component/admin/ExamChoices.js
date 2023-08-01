@@ -486,7 +486,10 @@ function ExamChoices() {
               </div>
               <FileUpload loading={loading} setLoad={setLoad} values={value4} setValue4={setValue4} />
               {loading || item.images.length > 0
-                ? <button type="button" className="btn btn-primary" disabled onClick={() => ImageAdd(index + 1)}>Loading... </button>
+                ? item.images.length > 0 
+                    ?(<button type="button" className="btn btn-primary" disabled onClick={() => ImageAdd(index + 1)}>Please delete all picture to add new</button>) 
+                    :(<button type="button" className="btn btn-primary" disabled onClick={() => ImageAdd(index + 1)}>Loading... </button>)
+
                 : <button type="button" className="btn btn-primary" onClick={() => ImageAdd(index + 1)}>Add Image </button>
               }
               <br />
