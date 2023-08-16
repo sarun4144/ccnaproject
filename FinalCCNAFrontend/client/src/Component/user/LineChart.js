@@ -84,11 +84,12 @@ const LineChart = () => {
     //         }
     //     ]
     // })
-    const labelsL = filterExamList.map((data) => data.Examname);
+    var i = 0
+    const labelsL = filterExamList.map((data) => `ครั้งที่ ${i +=1}` );
     const dataEasyL = {
         labels: labelsL,
         datasets: [{
-            label: 'Score',
+            label: 'คะแนนที่ทำได้',
             data: filterExamList.map((data) => data.Score),
             fill: true,
             backgroundColor: [
@@ -99,11 +100,32 @@ const LineChart = () => {
             borderWidth: 2,
         }]
     };
-    const labelsS = filterExamList.map((data) => data.Examname);
+    const options = {
+        scales: {
+            x: {
+              display: true,
+              title: {
+                display: true,
+                text: 'จำนวนครั้ง'
+              },
+            },
+            y: {
+                display: true,
+                title: {
+                  display: true,
+                  text: 'คะแนน'
+                },
+                min: 0,
+
+              }
+          }
+    }
+    var i = 0
+    const labelsS = filterExamList.map((data) => `ครั้งที่ ${i +=1}` );
     const dataEasyS = {
         labels: labelsS,
         datasets: [{
-            label: 'Score',
+            label: 'คะแนนที่ทำได้',
             data: filterExamList.map((data) => data.Score),
             fill: true,
             backgroundColor: [
@@ -133,9 +155,9 @@ const LineChart = () => {
                 &nbsp; &nbsp; <h5>Your  <span style={{ color: "green" }}>Easy</span> average score is {avgscore}</h5>
             </>
             {DataName.length > 5 ?
-                <Line data={dataEasyL}></Line>
+                <Line data={dataEasyL} options={options}></Line>
                 :
-                <Line data={dataEasyS}></Line>
+                <Line data={dataEasyS} options={options}></Line>
             }
         </div>
     )
